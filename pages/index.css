@@ -5,3 +5,26 @@
 /* Roots */
 @import url(../blocks/root/root.css);
 @import url(../blocks/page/page.css);
+
+/* Header */
+.header {
+  height: 74px;
+  max-width: 880px;
+  margin: 45px auto 0;
+  border-bottom: 1px solid #545454;
+  opacity: 0.7;
+}
+
+@media (max-width: 880px) {
+  .header {
+    padding-left: 27px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header {
+    margin-top: 28px;
+  }
+}
+.header {}
+.header {}

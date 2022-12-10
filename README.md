@@ -15,6 +15,8 @@ This is a 4th project from a [Yandex Practicum](https://practicum.yandex.ru/) we
 
 ## Overview
 
+
+
 ### Screenshot
 
 <!-- ![](./images/russian-travels_01.png) -->
