@@ -14,6 +14,8 @@
   border-bottom: 1px solid #545454;
   opacity: 0.7;
 }
+.header__logo {
+}
 
 @media (max-width: 880px) {
   .header {
@@ -26,5 +28,61 @@
     margin-top: 28px;
   }
 }
-.header {}
-.header {}
+
+.main {
+}
+.profile {
+}
+.profile__avatar {
+}
+.profile__user-info {
+}
+.profile__user-name {
+}
+.profile__user-profession {
+}
+.profile__button {
+}
+.cards {
+  margin: 0 auto;
+  max-width: 880px;
+}
+.cards__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cards__item {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 282px;
+  overflow: hidden;
+}
+.cards__image {
+
+}
+.cards__description {
+  padding: 25px 15px 31px 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cards__title {
+  margin: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: #000000;
+}
+.cards__like {
+  width: 22px;
+  height: 19px;
+  background-image: url(../images/heart_type_disabled.svg);
+}
+.footer {
+}
+.footer__copyright {
+}
