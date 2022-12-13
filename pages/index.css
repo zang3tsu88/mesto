@@ -13,8 +13,6 @@
   margin: 45px auto 0;
   border-bottom: 1px solid #54545470;
 }
-.header__logo {
-}
 
 @media (max-width: 880px) {
   .header {
