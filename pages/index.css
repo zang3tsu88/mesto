@@ -77,6 +77,12 @@
   background-image: url(../images/pencil_type_active.svg);
   background-repeat: no-repeat;
   background-position: center;
+  transition: opacity 100ms;
+  transition: opacity 100ms;
+}
+
+.profile__edit-btn:hover {
+  opacity: 0.6;
 }
 
 .profile__user-profession {
@@ -97,6 +103,11 @@
   background-image: url(../images/plus_type_active.svg);
   background-repeat: no-repeat;
   background-position: center;
+  transition: opacity 100ms;
+}
+
+.profile__btn:hover {
+  opacity: 0.6;
 }
 
 @media (max-width: 700px) {
@@ -182,6 +193,11 @@
   width: 22px;
   height: 19px;
   color: #fff;
+  transition: opacity 100ms;
+}
+
+.cards__like:hover {
+  opacity: 0.5;
 }
 
 @media (max-width: 580px) {
