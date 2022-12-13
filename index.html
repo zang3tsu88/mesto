@@ -17,19 +17,54 @@
         <img class="profile__avatar" src="/images/avatar_jack_iv_kusto.jpg" alt="Аватарка пользователя">
         <div class="profile__user-info">
           <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-btn"></button>
           <p class="profile__user-profession">Исследователь океана</p>
-          <button class="profile__button"></button>
         </div>
+        <button class="profile__btn"></button>
 
       </section>
       <section class="cards">
         <ul class="cards__list">
           <li class="cards__item">
+            <img class="cards__image" src="./images/karachaevsk.jpg" alt="Старинный монастырь в Карачаевске">
+            <div class="cards_description">
+              <h2 class="cards__title">Карачаевск</h2>
+              <div class="cards__like"></div>
+            </div>
+          </li>
+          <li class="cards__item">
             <img class="cards__image" src="./images/elbrus.jpg" alt="гора Эльбрус">
-            <div class="cards__description">
+            <div class="cards_description">
               <h2 class="cards__title">Гора Эльбрус</h2>
               <div class="cards__like"></div>
-
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/dombai.jpg" alt="горы Домбая">
+            <div class="cards_description">
+              <h2 class="cards__title">Домбай</h2>
+              <div class="cards__like"></div>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/karachaevsk.jpg" alt="Старинный монастырь в Карачаевске">
+            <div class="cards_description">
+              <h2 class="cards__title">Карачаевск</h2>
+              <div class="cards__like"></div>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/elbrus.jpg" alt="гора Эльбрус">
+            <div class="cards_description">
+              <h2 class="cards__title">Гора Эльбрус</h2>
+              <div class="cards__like"></div>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/dombai.jpg" alt="горы Домбая">
+            <div class="cards_description">
+              <h2 class="cards__title">Домбай</h2>
+              <div class="cards__like"></div>
             </div>
           </li>
         </ul>
@@ -40,6 +75,17 @@
     <footer class="footer">
       <p class="footer__copyright" lang="en">&copy; 2022. Mesto Russia</p>
     </footer>
+    <dialog class="popup">
+      <button class="popup_close-btn"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" method="dialog">
+        <input class="popup__name" type="text" placeholder="Жак-Ив Кусто">
+        <input class="popup__occupation" type="text" placeholder="Исследователь океана">
+        <button class="popup__submit-btn" type="submit">Сохранить</button>
+      </form>
+    </dialog>
+    </div>
   </div>
+  <script src="./script.js"></script>
 </body>
 </html>
