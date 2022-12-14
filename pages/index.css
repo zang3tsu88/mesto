@@ -85,7 +85,7 @@
   opacity: 0.6;
 }
 
-.profile__user-profession {
+.profile__user-occupation {
   color: #fff;
   margin: 0;
   font-weight: 400;
@@ -136,7 +136,7 @@
     height: 18px;
     background-size: 7.5px 7.5px;
   }
-  .profile__user-profession {
+  .profile__user-occupation {
     text-align: center;
     font-size: 14px;
     line-height: 17px;
@@ -234,7 +234,23 @@
 }
 
 .popup {
-  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 200ms,
+              opacity 200ms;
+}
+
+.popup_active {
+  visibility: visible;
+  opacity: 1;
+}
+.popup__window {
   margin: 0;
   position: fixed;
   top: 50%;
@@ -247,7 +263,9 @@
   max-width: 430px;
   padding: 34px 36px 37px 36px;
   box-sizing: border-box;
+  background-color: #fff;
 }
+
 .popup_close-btn {
   width: 32px;
   height: 32px;
@@ -323,7 +341,7 @@
 }
 
 @media (max-width: 580px) {
-  .popup {
+  .popup__window {
     border-radius: 10px;
     height: 322px;
     min-width: 282px;
@@ -345,8 +363,7 @@
   .popup__name {
     margin-top: 75px;
   }
-  .popup__occupation {
-  }
+
   .popup__submit-btn {
     margin-top: 45px;
   }
