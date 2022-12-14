@@ -195,6 +195,7 @@
   height: 19px;
   color: #fff;
   transition: opacity 100ms;
+  cursor: pointer;
 }
 
 .cards__like:hover {
