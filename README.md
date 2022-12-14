@@ -19,7 +19,7 @@ This is a 4th project from a [Yandex Practicum](https://practicum.yandex.ru/) we
 
 ### Screenshot
 
-<!-- ![](./images/russian-travels_01.png) -->
+![](./images/mesto_screenshot.png)
 
 ### Links
 
@@ -39,11 +39,16 @@ This is a 4th project from a [Yandex Practicum](https://practicum.yandex.ru/) we
 
 ### What I learned
 
+I learned two ways to make a pop-up(modal) window.
 
+1. Using an overlay and pop-up window `<div>`.
+2. Using a `<dialog>` tag. It has good built-in features like `element.openModal()` JavaScript functions with "out of the box" overlay that can be accessed with `::backdrop` pseudo-class to tweak its color or opacity, for example. Sadly it's still [not supported](https://caniuse.com/?search=dialog "CanIUse.com") everywhere.
 
 ### Useful resouces
 
 Really good YT channel about CSS - [Kevin Powell YT Channel](https://www.youtube.com/@KevinPowell "Youtube Channel")
+
+Kevin Powell - [Modal (YT video)](https://youtu.be/TAB_v6yBXIE)
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
 
