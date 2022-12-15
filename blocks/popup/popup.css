@@ -9,4 +9,7 @@
   opacity: 0;
   transition: visibility 200ms,
               opacity 200ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
