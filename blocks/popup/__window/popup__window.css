@@ -12,6 +12,7 @@
   padding: 34px 36px 37px 36px;
   box-sizing: border-box;
   background-color: #fff;
+  width: 60%;
 }
 
 @media (max-width: 580px) {
