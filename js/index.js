@@ -37,3 +37,5 @@ function formSubmit(evt) {
 
 submitButton.addEventListener("click", formSubmit);
 closeProfilePopup.addEventListener("click", closePopup);
+
+console.log(`${li}`)
