@@ -5,6 +5,9 @@
   color: #fff;
   transition: opacity 100ms;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
 }
 
 .cards__like:hover {

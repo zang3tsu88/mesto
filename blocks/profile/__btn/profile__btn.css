@@ -10,6 +10,7 @@
   background-position: center;
   transition: opacity 100ms;
   cursor: pointer;
+  padding: 0;
 }
 
 .profile__btn:hover {

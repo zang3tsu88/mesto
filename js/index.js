@@ -3,19 +3,8 @@ const popup = document.querySelector(".popup");
 // Buttons
 const openProfilePopup = document.querySelector(".profile__edit-btn");
 const closeProfilePopup = document.querySelector(".popup__close-btn");
-const submitButton = document.querySelector(".popup__submit-btn");
 
-// Open and Close Pop-up
-openProfilePopup.addEventListener("click", () => {
-  popup.classList.add("popup_active");
-})
-
-function closePopup() {
-  popup.classList.remove("popup_active");
-}
-// closeProfilePopup.addEventListener("click", () => {
-//   popup.classList.remove("popup_active");
-// })
+const popupForm = document.querySelector(".popup__form");
 
 // User Profile data on page
 const userName = document.querySelector(".profile__user-name");
@@ -25,17 +14,25 @@ const userOccupation = document.querySelector(".profile__user-occupation");
 const formName = popup.querySelector(".popup__name");
 const formOccupation = popup.querySelector(".popup__occupation");
 
+// Open and Close Pop-up
+function openPopup() {
+  popup.classList.add("popup_active");
+  formName.value = userName.textContent;
+  formOccupation.value = userOccupation.textContent;
+}
+
+function closePopup() {
+  popup.classList.remove("popup_active");
+}
+
 // Form Submit
 function formSubmit(evt) {
   evt.preventDefault(); // не много не понял, работает нормально и без этого
   userName.textContent = formName.value;
   userOccupation.textContent = formOccupation.value;
   closePopup();
-  formName.value = "";          //  после закрытия формы, очищает поле ввода,
-  formOccupation.value = "";    //  что бы при следующем открытии не отображалось ничего кроме placeholder
 }
 
-submitButton.addEventListener("click", formSubmit);
+openProfilePopup.addEventListener("click", openPopup);
+popupForm.addEventListener("submit", formSubmit);
 closeProfilePopup.addEventListener("click", closePopup);
-
-console.log(`${li}`)
