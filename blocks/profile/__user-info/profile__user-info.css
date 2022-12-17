@@ -6,6 +6,7 @@
   row-gap: 16px;
   column-gap: 18px;
   margin-left: 30px;
+  margin-right: 30px;
 }
 
 @media (max-width: 700px) {
