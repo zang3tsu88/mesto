@@ -1,12 +1,14 @@
 // Pop-up
-const popup = document.querySelector(".popup");
+const popup = document.querySelector(".popup"); //.popup_type_profile
+// const popup = document.querySelector(".popup"); //.popup_type_add-image
+// const popup = document.querySelector(".popup"); //.popup_type_pic
 
 // Buttons
 const openProfilePopup = document.querySelector(".profile__edit-btn");
 const closeProfilePopup = document.querySelector(".popup__close-btn");
 
 // Form
-const popupForm = document.querySelector(".popup__form");
+const profileForm = document.querySelector(".popup__form");
 
 // User Profile data on page
 const userName = document.querySelector(".profile__user-name");
@@ -36,5 +38,21 @@ function formSubmit(evt) {
 }
 
 openProfilePopup.addEventListener("click", openPopup);
-popupForm.addEventListener("submit", formSubmit);
+profileForm.addEventListener("submit", formSubmit);
 closeProfilePopup.addEventListener("click", closePopup);
+
+// // вариант I
+
+// popupButton.addEventListener('click', function () {
+//   popup.classList.add('popup_is-opened');
+// });
+
+// // вариант II
+
+// function openPopup(popupElement) {
+//   popupElement.classList.add('popup_is-opened');
+// }
+
+// popupButton.addEventListener('click', function () {
+//   openPopup(popup);
+// });

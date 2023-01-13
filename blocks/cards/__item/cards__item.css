@@ -1,7 +1,8 @@
 .cards__item {
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 10px;
   width: 282px;
   height: 361px;
   overflow: hidden;
+  position: relative;
 }

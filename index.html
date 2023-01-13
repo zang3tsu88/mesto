@@ -1,90 +1,176 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto</title>
-</head>
-<body class="root">
-  <div class="page">
-    <header class="header">
-       <img class="header__logo" src="./images/logo-mesto_color_white.svg" alt="логотип место россия">
-    </header>
-    <main class="main">
-      <section class="profile">
-        <img class="profile__avatar" src="./images/avatar_jack_iv_kusto.jpg" alt="Аватарка пользователя">
-        <div class="profile__user-info">
-          <h1 class="profile__user-name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-btn" type="button" aria-label="Редактировать профиль"></button>
-          <p class="profile__user-occupation">Исследователь океана</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Mesto</title>
+  </head>
+  <body class="root">
+    <div class="page">
+      <header class="header">
+        <img
+          class="header__logo"
+          src="./images/logo-mesto_color_white.svg"
+          alt="логотип место россия"
+        />
+      </header>
+      <main class="main">
+        <section class="profile">
+          <img
+            class="profile__avatar"
+            src="./images/avatar_jack_iv_kusto.jpg"
+            alt="Аватарка пользователя"
+          />
+          <div class="profile__user-info">
+            <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+            <button
+              class="profile__edit-btn"
+              type="button"
+              aria-label="Редактировать профиль"
+            ></button>
+            <p class="profile__user-occupation">Исследователь океана</p>
+          </div>
+          <button
+            class="profile__btn"
+            type="button"
+            aria-label="Добавить изображение"
+          ></button>
+        </section>
+        <section class="cards">
+          <ul class="cards__list">
+            <li class="cards__item">
+              <button class="cards__trash" aria-label="Удалить фото"></button>
+              <img
+                class="cards__image"
+                src="./images/karachaevsk.jpg"
+                alt="Старинный монастырь в Карачаевске"
+              />
+              <div class="cards__description">
+                <h2 class="cards__title">Карачаевск</h2>
+                <button
+                  class="cards__like"
+                  aria-label="Лайкнуть фото"
+                  type="button"
+                ></button>
+              </div>
+            </li>
+            <li class="cards__item">
+              <img
+                class="cards__image"
+                src="./images/elbrus.jpg"
+                alt="гора Эльбрус"
+              />
+              <div class="cards__description">
+                <h2 class="cards__title">Гора Эльбрус</h2>
+                <button
+                  class="cards__like"
+                  aria-label="Лайкнуть фото"
+                  type="button"
+                ></button>
+              </div>
+            </li>
+            <li class="cards__item">
+              <img
+                class="cards__image"
+                src="./images/dombai.jpg"
+                alt="горы Домбая"
+              />
+              <div class="cards__description">
+                <h2 class="cards__title">Домбай</h2>
+                <button
+                  class="cards__like"
+                  aria-label="Лайкнуть фото"
+                  type="button"
+                ></button>
+              </div>
+            </li>
+            <li class="cards__item">
+              <img
+                class="cards__image"
+                src="./images/karachaevsk.jpg"
+                alt="Старинный монастырь в Карачаевске"
+              />
+              <div class="cards__description">
+                <h2 class="cards__title">Карачаевск</h2>
+                <button
+                  class="cards__like"
+                  aria-label="Лайкнуть фото"
+                  type="button"
+                ></button>
+              </div>
+            </li>
+            <li class="cards__item">
+              <img
+                class="cards__image"
+                src="./images/elbrus.jpg"
+                alt="гора Эльбрус"
+              />
+              <div class="cards__description">
+                <h2 class="cards__title">Гора Эльбрус</h2>
+                <button
+                  class="cards__like"
+                  aria-label="Лайкнуть фото"
+                  type="button"
+                ></button>
+              </div>
+            </li>
+            <li class="cards__item">
+              <img
+                class="cards__image"
+                src="./images/dombai.jpg"
+                alt="горы Домбая"
+              />
+              <div class="cards__description">
+                <h2 class="cards__title">Домбай</h2>
+                <button
+                  class="cards__like"
+                  aria-label="Лайкнуть фото"
+                  type="button"
+                ></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright" lang="en">&copy; 2022. Mesto Russia</p>
+      </footer>
+      <div class="popup">
+        <div class="popup__window">
+          <button
+            class="popup__close-btn"
+            type="button"
+            aria-label="Закрыть попап"
+          ></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form" name="editProfilePopupForm" method="POST">
+            <input
+              class="popup__input"
+              id="popupName"
+              name="name"
+              type="text"
+              placeholder="Имя"
+            />
+            <input
+              class="popup__input"
+              id="popupOccupation"
+              name="occupation"
+              type="text"
+              placeholder="О себе"
+            />
+            <button
+              class="popup__submit-btn"
+              type="submit"
+              aria-label="Сохранить изменения"
+            >
+              Сохранить
+            </button>
+          </form>
         </div>
-        <button class="profile__btn" type="button" aria-label="Добавить изображение"></button>
-
-      </section>
-      <section class="cards">
-        <ul class="cards__list">
-          <li class="cards__item">
-            <img class="cards__image" src="./images/karachaevsk.jpg" alt="Старинный монастырь в Карачаевске">
-            <div class="cards__description">
-              <h2 class="cards__title">Карачаевск</h2>
-              <button class="cards__like" aria-label="Лайкнуть фото" type="button"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <img class="cards__image" src="./images/elbrus.jpg" alt="гора Эльбрус">
-            <div class="cards__description">
-              <h2 class="cards__title">Гора Эльбрус</h2>
-              <button class="cards__like" aria-label="Лайкнуть фото" type="button"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <img class="cards__image" src="./images/dombai.jpg" alt="горы Домбая">
-            <div class="cards__description">
-              <h2 class="cards__title">Домбай</h2>
-              <button class="cards__like" aria-label="Лайкнуть фото" type="button"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <img class="cards__image" src="./images/karachaevsk.jpg" alt="Старинный монастырь в Карачаевске">
-            <div class="cards__description">
-              <h2 class="cards__title">Карачаевск</h2>
-              <button class="cards__like" aria-label="Лайкнуть фото" type="button"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <img class="cards__image" src="./images/elbrus.jpg" alt="гора Эльбрус">
-            <div class="cards__description">
-              <h2 class="cards__title">Гора Эльбрус</h2>
-              <button class="cards__like" aria-label="Лайкнуть фото" type="button"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <img class="cards__image" src="./images/dombai.jpg" alt="горы Домбая">
-            <div class="cards__description">
-              <h2 class="cards__title">Домбай</h2>
-              <button class="cards__like" aria-label="Лайкнуть фото" type="button"></button>
-            </div>
-          </li>
-        </ul>
-      </section>
-    </main>
-    <footer class="footer">
-      <p class="footer__copyright" lang="en">&copy; 2022. Mesto Russia</p>
-    </footer>
-    <div class="popup">
-      <div class="popup__window">
-        <button class="popup__close-btn" type="button" aria-label="Закрыть попап"></button>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="editProfilePopupForm" method="POST">
-          <input class="popup__input" id="popupName" name="name" type="text" placeholder="Имя">
-          <input class="popup__input" id="popupOccupation" name="occupation" type="text" placeholder="О себе">
-          <button class="popup__submit-btn" type="submit" aria-label="Сохранить изменения">Сохранить</button>
-        </form>
       </div>
     </div>
-  </div>
-  <script src="./js/index.js"></script>
-</body>
+    <script src="./js/index.js"></script>
+  </body>
 </html>
