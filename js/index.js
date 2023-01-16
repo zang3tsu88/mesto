@@ -15,8 +15,10 @@ const userName = document.querySelector(".profile__user-name");
 const userOccupation = document.querySelector(".profile__user-occupation");
 
 // User Profile Form Input Fields
-const formName = popupProfile.querySelector("#popupName");
-const formOccupation = popupProfile.querySelector("#popupOccupation");
+const formName = popupProfile.querySelector(".popup__input_type_name");
+const formOccupation = popupProfile.querySelector(
+  ".popup__input_type_occupation"
+);
 
 // Load Profile Info from main page into popup form inputs
 function insertProfileInfo() {
