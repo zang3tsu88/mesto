@@ -33,12 +33,31 @@
             <p class="profile__user-occupation">Исследователь океана</p>
           </div>
           <button
-            class="profile__btn"
+            class="profile__btn-add-img"
             type="button"
             aria-label="Добавить изображение"
           ></button>
         </section>
         <section class="cards">
+          <!-- <template class="cards__item-template">
+            <li class="cards__item">
+              <button class="cards__trash" aria-label="Удалить фото"></button>
+              <img
+                class="cards__image"
+                src="./images/karachaevsk.jpg"
+                alt="Старинный монастырь в Карачаевске"
+              />
+              <div class="cards__description">
+                <h2 class="cards__title">Карачаевск</h2>
+                <button
+                  class="cards__like"
+                  aria-label="Лайкнуть фото"
+                  type="button"
+                ></button>
+              </div>
+            </li>
+          </template> -->
+
           <ul class="cards__list">
             <li class="cards__item">
               <button class="cards__trash" aria-label="Удалить фото"></button>
@@ -168,7 +187,52 @@
           </form>
         </div>
       </div>
+
+      <div class="popup popup_type_add-image">
+        <div class="popup__window">
+          <button
+            class="popup__close-btn"
+            type="button"
+            aria-label="Закрыть попап"
+          ></button>
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form" name="editProfilePopupForm" method="POST">
+            <input
+              class="popup__input popup__input_type_image-title"
+              name="image-title"
+              type="text"
+              placeholder="Название"
+            />
+            <input
+              class="popup__input popup__input_type_image-url"
+              name="image-url"
+              type="text"
+              placeholder="Ссылка на картинку"
+            />
+            <button
+              class="popup__submit-btn"
+              type="submit"
+              aria-label="Сохранить изменения"
+            >
+              Создать
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_open-image">
+        <figure class="popup__image-figure">
+          <button
+            class="popup__close-btn"
+            type="button"
+            aria-label="Закрыть попап"
+          ></button>
+          <img src="./images/karachaevsk.jpg" alt="" />
+          <figcaption class="popup__image-title">Карачаевск</figcaption>
+        </figure>
+      </div>
     </div>
+    <script src="./js/cards.js"></script>
     <script src="./js/index.js"></script>
   </body>
 </html>

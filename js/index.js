@@ -1,11 +1,26 @@
 // Pop-ups
 const popupProfile = document.querySelector(".popup_type_profile");
-// const popupAddImage = document.querySelector(".popup"); //.popup_type_add-image
-// const popupViewImage = document.querySelector(".popup"); //.popup_type_image
+const popupAddImage = document.querySelector(".popup_type_add-image");
+const popupViewImage = document.querySelector(".popup_type_open-image");
 
+///////////////
 // Buttons
+///////////////
+// Profile
 const openProfilePopup = document.querySelector(".profile__edit-btn");
-const closeProfilePopup = document.querySelector(".popup__close-btn");
+const closeProfilePopup = popupProfile.querySelector(".popup__close-btn");
+
+// Add Image Popup
+const openAddImagePopup = document.querySelector(".profile__btn-add-img");
+const closeAddImagePopup = popupAddImage.querySelector(".popup__close-btn");
+
+// View Image Popup
+const openViewImagePopup = document.querySelector(".cards__image");
+const closeViewImagePopup = popupViewImage.querySelector(".popup__close-btn");
+
+// Card Buttons
+const likeButton = document.querySelector(".cards__like");
+const deleteImageButton = document.querySelector(".cards__trash");
 
 // Forms
 const profileForm = document.querySelector(".popup__form");
@@ -36,16 +51,17 @@ function closePopup(popup) {
 }
 
 // Form Submit
-function formSubmit(evt) {
-  evt.preventDefault(); // не много не понял, работает нормально и без этого
-  userName.textContent = formName.value;
-  userOccupation.textContent = formOccupation.value;
+function formSubmit(event) {
+  event.preventDefault();
+
+  userName.textContent = formName.value; // new function for profile and
+  userOccupation.textContent = formOccupation.value; //image form values
   closePopup(popupProfile);
 }
 
+//////////////////////
 // Event Listeners
 //////////////////////
-
 // Profile Popup
 openProfilePopup.addEventListener("click", () => {
   openPopup(popupProfile);
@@ -59,3 +75,23 @@ closeProfilePopup.addEventListener("click", () => {
 profileForm.addEventListener("submit", formSubmit);
 
 // Add Image Popup
+openAddImagePopup.addEventListener("click", () => {
+  openPopup(popupAddImage);
+});
+
+closeAddImagePopup.addEventListener("click", () => {
+  closePopup(popupAddImage);
+});
+
+likeButton.addEventListener("click", () => {
+  likeButton.classList.toggle("cards__like_active");
+});
+
+// View Image Popup
+openViewImagePopup.addEventListener("click", () => {
+  openPopup(popupViewImage);
+});
+
+closeViewImagePopup.addEventListener("click", () => {
+  closePopup(popupViewImage);
+});
