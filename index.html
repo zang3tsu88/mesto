@@ -39,25 +39,6 @@
           ></button>
         </section>
         <section class="cards">
-          <!-- <template class="cards__item-template">
-            <li class="cards__item">
-              <button class="cards__trash" aria-label="Удалить фото"></button>
-              <img
-                class="cards__image"
-                src="./images/karachaevsk.jpg"
-                alt="Старинный монастырь в Карачаевске"
-              />
-              <div class="cards__description">
-                <h2 class="cards__title">Карачаевск</h2>
-                <button
-                  class="cards__like"
-                  aria-label="Лайкнуть фото"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-          </template> -->
-
           <ul class="cards__list">
             <li class="cards__item">
               <button class="cards__trash" aria-label="Удалить фото"></button>
@@ -232,6 +213,25 @@
         </figure>
       </div>
     </div>
+    <template class="cards__item-template">
+      <li class="cards__item">
+        <button class="cards__trash" aria-label="Удалить фото"></button>
+        <img
+          class="cards__image"
+          src="./images/karachaevsk.jpg"
+          alt="Старинный монастырь в Карачаевске"
+        />
+        <div class="cards__description">
+          <h2 class="cards__title">Карачаевск</h2>
+          <button
+            class="cards__like"
+            aria-label="Лайкнуть фото"
+            type="button"
+          ></button>
+        </div>
+      </li>
+    </template>
+
     <script src="./js/cards.js"></script>
     <script src="./js/index.js"></script>
   </body>
