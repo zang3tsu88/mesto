@@ -95,3 +95,9 @@ openViewImagePopup.addEventListener("click", () => {
 closeViewImagePopup.addEventListener("click", () => {
   closePopup(popupViewImage);
 });
+
+function multiplier(factor) {
+  return function (x) {
+    return x * factor;
+  };
+}
