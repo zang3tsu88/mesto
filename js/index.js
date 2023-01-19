@@ -61,7 +61,6 @@ function editProfileForm(event) {
 
 function addImageForm(event) {
   event.preventDefault();
-
   const formImageTitle = addImageForm.querySelector(
     ".popup__input_type_image-title"
   );
@@ -103,6 +102,7 @@ function createCard(card) {
 
   return cardElement;
 }
+
 // function createCard({ name, link }) {
 //   const cardTemplate = document
 //     .querySelector(".cards__item-template")
@@ -125,16 +125,16 @@ function createCard(card) {
 //     cardElement.remove();
 //   });
 
-// function previewImage() {
-//   openViewImagePopup.addEventListener("click", () => {
-//     openPopup(popupViewImage);
-//   });
+//   function previewImage() {
+//     openViewImagePopup.addEventListener("click", () => {
+//       openPopup(popupViewImage);
+//     });
 
-//   closeViewImagePopup.addEventListener("click", () => {
-//     closePopup(popupViewImage);
-//   });
-// }
-// previewImage(cardImage);
+//     closeViewImagePopup.addEventListener("click", () => {
+//       closePopup(popupViewImage);
+//     });
+//   }
+//   previewImage(cardImage);
 
 //   return cardElement;
 // }
@@ -142,7 +142,6 @@ function createCard(card) {
 function renderCards() {
   const gallery = document.querySelector(".cards__list");
   initialCards.forEach((item) => {
-    // console.log(item);
     const card = createCard(item);
     gallery.prepend(card);
   });
@@ -172,8 +171,9 @@ closeAddImagePopup.addEventListener("click", () => {
   closePopup(popupAddImage);
 });
 
-imageForm.addEventListener("submit", addImageForm);
-// // View Image Popup
+// imageForm.addEventListener("submit", addImageForm);
+// View Image Popup
+
 // openViewImagePopup.addEventListener("click", () => {
 //   openPopup(popupViewImage);
 // });
