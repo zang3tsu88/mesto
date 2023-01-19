@@ -102,10 +102,16 @@ function createCard(card) {
     cardElement.remove();
   });
 
+  const bigImage = popupViewImage.querySelector(".popup__image");
   cardImage.addEventListener("click", () => {
-    cardImage.src = card.link;
-    cardImage.alt = card.name;
+    bigImage.src = card.link;
+    bigImage.alt = card.name;
     cardTitle.textContent = card.name;
+    openPopup(popupViewImage);
+  });
+
+  closeViewImagePopup.addEventListener("click", () => {
+    closePopup(popupViewImage);
   });
 
   return cardElement;
@@ -154,9 +160,6 @@ function renderCards() {
   });
 }
 
-//////////////////////
-// Event Listeners
-//////////////////////
 // Profile Popup
 openProfilePopup.addEventListener("click", () => {
   openPopup(popupProfile);
