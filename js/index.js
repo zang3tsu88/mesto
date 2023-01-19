@@ -102,11 +102,12 @@ function createCard(card) {
     cardElement.remove();
   });
 
+  const bitImageTitle = popupViewImage.querySelector(".popup__image-title");
   const bigImage = popupViewImage.querySelector(".popup__image");
   cardImage.addEventListener("click", () => {
     bigImage.src = card.link;
     bigImage.alt = card.name;
-    cardTitle.textContent = card.name;
+    bitImageTitle.textContent = card.name;
     openPopup(popupViewImage);
   });
 
@@ -182,9 +183,24 @@ closeAddImagePopup.addEventListener("click", () => {
 });
 
 imageForm.addEventListener("submit", addImageForm);
+
 // View Image Popup
 
-// openViewImagePopup.addEventListener("click", () => {
+// const likeButton = cardElement.querySelector(".cards__like");
+// likeButton.addEventListener("click", () => {
+//   likeButton.classList.toggle("cards__like_active");
+// });
+
+// const deleteImageButton = cardElement.querySelector(".cards__trash");
+// deleteImageButton.addEventListener("click", () => {
+//   cardElement.remove();
+// });
+
+// const bigImage = popupViewImage.querySelector(".popup__image");
+// cardImage.addEventListener("click", () => {
+//   bigImage.src = card.link;
+//   bigImage.alt = card.name;
+//   cardTitle.textContent = card.name;
 //   openPopup(popupViewImage);
 // });
 
