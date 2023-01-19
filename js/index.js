@@ -22,7 +22,7 @@ const closeViewImagePopup = popupViewImage.querySelector(".popup__close-btn");
 const profileForm = popupProfile.querySelector(
   ".popup__form_type_edit-profile"
 );
-const imageForm = popupAddImage.querySelector(".popup__form_type_img");
+const imageForm = popupAddImage.querySelector(".popup__form_type_add-img");
 
 // User Profile data on page
 const userName = document.querySelector(".profile__user-name");
@@ -33,6 +33,9 @@ const formName = popupProfile.querySelector(".popup__input_type_name");
 const formOccupation = popupProfile.querySelector(
   ".popup__input_type_occupation"
 );
+
+// Gallery
+const gallery = document.querySelector(".cards__list");
 
 // Load Profile Info from main page into popup form inputs
 function insertProfileInfo() {
@@ -61,21 +64,20 @@ function editProfileForm(event) {
 
 function addImageForm(event) {
   event.preventDefault();
-  const formImageTitle = addImageForm.querySelector(
+
+  const formImageTitle = imageForm.querySelector(
     ".popup__input_type_image-title"
   );
-  const formImageUrl = addImageForm.querySelector(
-    ".popup__input_type_image-url"
-  );
+  const formImageUrl = imageForm.querySelector(".popup__input_type_image-url");
 
-  const newCard = {
+  const newCard = createCard({
     name: formImageTitle.value,
     link: formImageUrl.value,
-  };
+  });
 
-  renderCards(newCard);
+  gallery.prepend(newCard);
 
-  closePopup(popupProfile);
+  closePopup(popupAddImage);
 }
 
 function createCard(card) {
@@ -98,6 +100,12 @@ function createCard(card) {
   const deleteImageButton = cardElement.querySelector(".cards__trash");
   deleteImageButton.addEventListener("click", () => {
     cardElement.remove();
+  });
+
+  cardImage.addEventListener("click", () => {
+    cardImage.src = card.link;
+    cardImage.alt = card.name;
+    cardTitle.textContent = card.name;
   });
 
   return cardElement;
@@ -140,7 +148,6 @@ function createCard(card) {
 // }
 
 function renderCards() {
-  const gallery = document.querySelector(".cards__list");
   initialCards.forEach((item) => {
     const card = createCard(item);
     gallery.prepend(card);
@@ -171,7 +178,7 @@ closeAddImagePopup.addEventListener("click", () => {
   closePopup(popupAddImage);
 });
 
-// imageForm.addEventListener("submit", addImageForm);
+imageForm.addEventListener("submit", addImageForm);
 // View Image Popup
 
 // openViewImagePopup.addEventListener("click", () => {
