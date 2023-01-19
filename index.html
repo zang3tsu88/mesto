@@ -40,7 +40,7 @@
         </section>
         <section class="cards">
           <ul class="cards__list">
-            <li class="cards__item">
+            <!-- <li class="cards__item">
               <button class="cards__trash" aria-label="Удалить фото"></button>
               <img
                 class="cards__image"
@@ -130,7 +130,7 @@
                   type="button"
                 ></button>
               </div>
-            </li>
+            </li> -->
           </ul>
         </section>
       </main>
@@ -145,7 +145,11 @@
             aria-label="Закрыть попап"
           ></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="editProfilePopupForm" method="POST">
+          <form
+            class="popup__form popup__form_type_edit-profile"
+            name="editProfilePopupForm"
+            method="POST"
+          >
             <input
               class="popup__input popup__input_type_name"
               name="name"
@@ -177,7 +181,11 @@
             aria-label="Закрыть попап"
           ></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form" name="editProfilePopupForm" method="POST">
+          <form
+            class="popup__form popup__form_type_add-img"
+            name="editProfilePopupForm"
+            method="POST"
+          >
             <input
               class="popup__input popup__input_type_image-title"
               name="image-title"
@@ -213,6 +221,7 @@
         </figure>
       </div>
     </div>
+
     <template class="cards__item-template">
       <li class="cards__item">
         <button class="cards__trash" aria-label="Удалить фото"></button>
