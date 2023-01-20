@@ -64,6 +64,13 @@ function likeCard(evt) {
   evt.target.classList.toggle("cards__like_active");
 }
 
+function openImagePopup(card) {
+  bigImage.src = card.link;
+  bigImage.alt = card.name;
+  bigImageTitle.textContent = card.name;
+  openPopup(popupViewImage);
+}
+
 function createCard(card) {
   const cardElement = cardTemplate.cloneNode("true");
   const cardImage = cardElement.querySelector(".cards__image");
@@ -79,16 +86,10 @@ function createCard(card) {
   const likeButton = cardElement.querySelector(".cards__like");
   likeButton.addEventListener("click", likeCard);
 
-  // тут придумать название для функции открытия картинки и вынести как с лайками и делит
-  cardImage.addEventListener("click", () => {
-    bigImage.src = card.link;
-    bigImage.alt = card.name;
-    bigImageTitle.textContent = card.name;
-    openPopup(popupViewImage);
-  });
+  // cardImage.addEventListener("click", openImagePopup(card));
 
-  buttonCloseImagePopup.addEventListener("click", () => {
-    closePopup(popupViewImage);
+  cardImage.addEventListener("click", () => {
+    openImagePopup(card);
   });
 
   return cardElement;
@@ -161,5 +162,10 @@ buttonCloseAddImagePopup.addEventListener("click", () => {
 });
 
 imageForm.addEventListener("submit", addImageForm);
+
+// View Image Popup
+buttonCloseImagePopup.addEventListener("click", () => {
+  closePopup(popupViewImage);
+});
 
 renderCards();
