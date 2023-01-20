@@ -14,8 +14,10 @@ const buttonCloseAddImagePopup =
   popupAddImage.querySelector(".popup__close-btn");
 
 // View Image Popup
-const openViewImagePopup = document.querySelector(".cards__image");
-const closeViewImagePopup = popupViewImage.querySelector(".popup__close-btn");
+const cardImage = document.querySelector(".cards__image");
+const buttonCloseImagePopup = popupViewImage.querySelector(".popup__close-btn");
+const bigImageTitle = popupViewImage.querySelector(".popup__image-title");
+const bigImage = popupViewImage.querySelector(".popup__image");
 
 // Forms
 const profileForm = popupProfile.querySelector(
@@ -33,7 +35,16 @@ const formOccupation = popupProfile.querySelector(
   ".popup__input_type_occupation"
 );
 
-// Gallery
+// Add Image Form Input Fields
+const formImageTitle = imageForm.querySelector(
+  ".popup__input_type_image-title"
+);
+const formImageUrl = imageForm.querySelector(".popup__input_type_image-url");
+
+// Gallery & Template
+const cardTemplate = document
+  .querySelector(".cards__item-template")
+  .content.querySelector(".cards__item");
 const gallery = document.querySelector(".cards__list");
 
 // Open and Close Pop-up
@@ -45,33 +56,30 @@ function closePopup(popup) {
   popup.classList.remove("popup_active");
 }
 
+function deleteCard(evt) {
+  evt.target.closest(".cards__item").remove();
+}
+
+function likeCard(evt) {
+  evt.target.classList.toggle("cards__like_active");
+}
+
 function createCard(card) {
-  // ({ name, link }) ? Не решу как лучше...
-  const cardTemplate = document
-    .querySelector(".cards__item-template")
-    .content.querySelector(".cards__item");
   const cardElement = cardTemplate.cloneNode("true");
   const cardImage = cardElement.querySelector(".cards__image");
   const cardTitle = cardElement.querySelector(".cards__title");
 
-  cardImage.src = card.link; // link
-  cardImage.alt = card.name; // name
+  cardImage.src = card.link;
+  cardImage.alt = card.name;
   cardTitle.textContent = card.name;
 
-  const likeButton = cardElement.querySelector(".cards__like");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("cards__like_active");
-  });
-
   const deleteImageButton = cardElement.querySelector(".cards__trash");
-  deleteImageButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  deleteImageButton.addEventListener("click", deleteCard);
 
-  const bigImageTitle = popupViewImage.querySelector(".popup__image-title");
-  const bigImage = popupViewImage.querySelector(".popup__image");
-  // Не уверен что придумал хорошее имя переменной...
-  // previewImage не подходит, fullScreenImage тоже...
+  const likeButton = cardElement.querySelector(".cards__like");
+  likeButton.addEventListener("click", likeCard);
+
+  // тут придумать название для функции открытия картинки и вынести как с лайками и делит
   cardImage.addEventListener("click", () => {
     bigImage.src = card.link;
     bigImage.alt = card.name;
@@ -79,7 +87,7 @@ function createCard(card) {
     openPopup(popupViewImage);
   });
 
-  closeViewImagePopup.addEventListener("click", () => {
+  buttonCloseImagePopup.addEventListener("click", () => {
     closePopup(popupViewImage);
   });
 
@@ -101,6 +109,13 @@ function insertProfileInfo() {
 
 // Forms
 function editProfileForm(event) {
+  // edit это глагол ведь.
+  // может подскажите, есть ли в практике какие-то шаблонные названия для форм,
+  // я просто пытался придумать чтоб одинаковые сущности одинаково начинались.. может:
+  // submitEditProfileForm, submitaddImageForm или слово Form в конце уже лишнее?
+  //
+  //Я просто думал чтоб одинаковые переменные типа кнопок начинались одинаково buttonOpen, buttonClose, buttonEdit, buttonSubmit.. или нужно чтоб они звучали естественно?
+  //////
   event.preventDefault();
 
   userName.textContent = formName.value;
@@ -112,11 +127,6 @@ function editProfileForm(event) {
 function addImageForm(event) {
   event.preventDefault();
 
-  const formImageTitle = imageForm.querySelector(
-    ".popup__input_type_image-title"
-  );
-  const formImageUrl = imageForm.querySelector(".popup__input_type_image-url");
-
   const newCard = createCard({
     name: formImageTitle.value,
     link: formImageUrl.value,
@@ -124,8 +134,7 @@ function addImageForm(event) {
 
   gallery.prepend(newCard);
 
-  formImageTitle.value = "";
-  formImageUrl.value = "";
+  imageForm.reset();
 
   closePopup(popupAddImage);
 }
