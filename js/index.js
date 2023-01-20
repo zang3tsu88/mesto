@@ -3,19 +3,17 @@ const popupProfile = document.querySelector(".popup_type_profile");
 const popupAddImage = document.querySelector(".popup_type_add-image");
 const popupViewImage = document.querySelector(".popup_type_open-image");
 
+// Close Buttons
+const buttonCloseList = document.querySelectorAll(".popup__close-btn");
+
 // Profile
 const buttonEditProfile = document.querySelector(".profile__edit-btn");
-const buttonCloseEditProfilePopup =
-  popupProfile.querySelector(".popup__close-btn");
 
 // Add Image Popup
 const buttonAddImage = document.querySelector(".profile__btn-add-img");
-const buttonCloseAddImagePopup =
-  popupAddImage.querySelector(".popup__close-btn");
 
 // View Image Popup
 const cardImage = document.querySelector(".cards__image");
-const buttonCloseImagePopup = popupViewImage.querySelector(".popup__close-btn");
 const bigImageTitle = popupViewImage.querySelector(".popup__image-title");
 const bigImage = popupViewImage.querySelector(".popup__image");
 
@@ -86,8 +84,11 @@ function createCard(card) {
   const likeButton = cardElement.querySelector(".cards__like");
   likeButton.addEventListener("click", likeCard);
 
-  // cardImage.addEventListener("click", openImagePopup(card));
+  // Тут до конца так и не понял почему работает нижний вариант а не другие..
+  // вроде передаю значения этого обьекта.. и почему пишеться через стрелку ?
 
+  // cardImage.addEventListener("click", openImagePopup(card));
+  // cardImage.addEventListener("click", openImagePopup(cardImage));
   cardImage.addEventListener("click", () => {
     openImagePopup(card);
   });
@@ -146,10 +147,6 @@ buttonEditProfile.addEventListener("click", () => {
   insertProfileInfo();
 });
 
-buttonCloseEditProfilePopup.addEventListener("click", () => {
-  closePopup(popupProfile);
-});
-
 profileForm.addEventListener("submit", editProfileForm);
 
 // Add Image Popup
@@ -157,15 +154,11 @@ buttonAddImage.addEventListener("click", () => {
   openPopup(popupAddImage);
 });
 
-buttonCloseAddImagePopup.addEventListener("click", () => {
-  closePopup(popupAddImage);
-});
-
 imageForm.addEventListener("submit", addImageForm);
 
-// View Image Popup
-buttonCloseImagePopup.addEventListener("click", () => {
-  closePopup(popupViewImage);
+buttonCloseList.forEach((button) => {
+  const popup = button.closest(".popup");
+  button.addEventListener("click", () => closePopup(popup));
 });
 
 renderCards();
