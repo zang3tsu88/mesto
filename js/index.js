@@ -54,21 +54,6 @@ function closePopup(popup) {
   popup.classList.remove("popup_active");
 }
 
-function deleteCard(evt) {
-  evt.target.closest(".cards__item").remove();
-}
-
-function likeCard(evt) {
-  evt.target.classList.toggle("cards__like_active");
-}
-
-function openImagePopup(card) {
-  bigImage.src = card.link;
-  bigImage.alt = card.name;
-  bigImageTitle.textContent = card.name;
-  openPopup(popupViewImage);
-}
-
 function createCard(card) {
   const cardElement = cardTemplate.cloneNode("true");
   const cardImage = cardElement.querySelector(".cards__image");
@@ -101,6 +86,21 @@ function renderCards() {
     const card = createCard(item);
     gallery.prepend(card);
   });
+}
+
+function deleteCard(evt) {
+  evt.target.closest(".cards__item").remove();
+}
+
+function likeCard(evt) {
+  evt.target.classList.toggle("cards__like_active");
+}
+
+function openImagePopup(card) {
+  bigImage.src = card.link;
+  bigImage.alt = card.name;
+  bigImageTitle.textContent = card.name;
+  openPopup(popupViewImage);
 }
 
 // Load Profile Info from main page into popup form inputs
@@ -141,21 +141,21 @@ function addImageForm(event) {
   closePopup(popupAddImage);
 }
 
+profileForm.addEventListener("submit", editProfileForm);
+imageForm.addEventListener("submit", addImageForm);
+
 // Profile Popup
 buttonEditProfile.addEventListener("click", () => {
   openPopup(popupProfile);
   insertProfileInfo();
 });
 
-profileForm.addEventListener("submit", editProfileForm);
-
 // Add Image Popup
 buttonAddImage.addEventListener("click", () => {
   openPopup(popupAddImage);
 });
 
-imageForm.addEventListener("submit", addImageForm);
-
+// Close Buttons
 buttonCloseList.forEach((button) => {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
