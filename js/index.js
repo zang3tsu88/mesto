@@ -63,17 +63,13 @@ function createCard(card) {
   cardImage.alt = card.name;
   cardTitle.textContent = card.name;
 
+  // MOVED IT OUT OF THE CARD FUNCTION BELOW TO LIKE/DELETE FUNCITON.
   const deleteImageButton = cardElement.querySelector(".cards__trash");
   deleteImageButton.addEventListener("click", deleteCard);
 
-  const likeButton = cardElement.querySelector(".cards__like");
-  likeButton.addEventListener("click", likeCard);
+  // const likeButton = cardElement.querySelector(".cards__like");
+  // likeButton.addEventListener("click", likeCard);
 
-  // Тут до конца так и не понял почему работает нижний вариант а не другие..
-  // вроде передаю значения этого обьекта.. и почему пишеться через стрелку ?
-
-  // cardImage.addEventListener("click", openImagePopup(card));
-  // cardImage.addEventListener("click", openImagePopup(cardImage));
   cardImage.addEventListener("click", () => {
     openImagePopup(card);
   });
@@ -88,13 +84,21 @@ function renderCards() {
   });
 }
 
-function deleteCard(evt) {
-  evt.target.closest(".cards__item").remove();
+function deleteCard(event) {
+  event.target.closest(".cards__item").remove();
 }
 
-function likeCard(evt) {
-  evt.target.classList.toggle("cards__like_active");
+// Added if/else construct, addeed galary event listener
+function likeCard(event) {
+  console.log(event.target);
+  console.log(event.currentTarget);
+  // console.log(event.target)
+  if (event.target.classList.contains("cards__like")) {
+    console.log(event);
+    event.target.classList.toggle("cards__like_active");
+  }
 }
+gallery.addEventListener("click", likeCard);
 
 function openImagePopup(card) {
   bigImage.src = card.link;
@@ -110,14 +114,7 @@ function insertProfileInfo() {
 }
 
 // Forms
-function editProfileForm(event) {
-  // edit это глагол ведь.
-  // может подскажите, есть ли в практике какие-то шаблонные названия для форм,
-  // я просто пытался придумать чтоб одинаковые сущности одинаково начинались.. может:
-  // submitEditProfileForm, submitaddImageForm или слово Form в конце уже лишнее?
-  //
-  //Я просто думал чтоб одинаковые переменные типа кнопок начинались одинаково buttonOpen, buttonClose, buttonEdit, buttonSubmit.. или нужно чтоб они звучали естественно?
-  //////
+function handleSubmitProfileForm(event) {
   event.preventDefault();
 
   userName.textContent = formName.value;
@@ -126,7 +123,7 @@ function editProfileForm(event) {
   closePopup(popupProfile);
 }
 
-function addImageForm(event) {
+function handleAddImageForm(event) {
   event.preventDefault();
 
   const newCard = createCard({
@@ -141,8 +138,8 @@ function addImageForm(event) {
   closePopup(popupAddImage);
 }
 
-profileForm.addEventListener("submit", editProfileForm);
-imageForm.addEventListener("submit", addImageForm);
+profileForm.addEventListener("submit", handleSubmitProfileForm);
+imageForm.addEventListener("submit", handleAddImageForm);
 
 // Profile Popup
 buttonEditProfile.addEventListener("click", () => {
