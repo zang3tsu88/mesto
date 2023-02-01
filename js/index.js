@@ -64,8 +64,9 @@ function createCard(card) {
   cardTitle.textContent = card.name;
 
   // MOVED IT OUT OF THE CARD FUNCTION BELOW TO LIKE/DELETE FUNCITON.
-  const deleteImageButton = cardElement.querySelector(".cards__trash");
-  deleteImageButton.addEventListener("click", deleteCard);
+
+  // const deleteImageButton = cardElement.querySelector(".cards__trash");
+  // deleteImageButton.addEventListener("click", deleteCard);
 
   // const likeButton = cardElement.querySelector(".cards__like");
   // likeButton.addEventListener("click", likeCard);
@@ -84,17 +85,23 @@ function renderCards() {
   });
 }
 
-function deleteCard(event) {
-  event.target.closest(".cards__item").remove();
-}
+// Added if/else construct, addeed galary event listeners
 
-// Added if/else construct, addeed galary event listener
+// ВОПРОС:
+
+// Стоило ли переделывать на всплытие? addEventListener лучше тут оставить или куда-то(например вниз перенести)
+
+// Я сделал их раздельно, но я полагаю можно один слушатель сделать на все 3 события, вот только стоит ли? Мне кажется читаемость ухудшиться.
+
+function deleteCard(event) {
+  if (event.target.classList.contains("cards__trash")) {
+    event.target.closest(".cards__item").remove();
+  }
+}
+gallery.addEventListener("click", deleteCard);
+
 function likeCard(event) {
-  console.log(event.target);
-  console.log(event.currentTarget);
-  // console.log(event.target)
   if (event.target.classList.contains("cards__like")) {
-    console.log(event);
     event.target.classList.toggle("cards__like_active");
   }
 }
