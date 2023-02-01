@@ -49,3 +49,16 @@
 @import url(../blocks/popup/__image-figure/popup__image-figure.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__image-title/popup__image-title.css);
+
+/* Вернуться позже. Может достаточно одного класса. */
+.popup__input-error-msg {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  display: block;
+  height: 30px;
+  padding-top: 5px;
+}
+.popup__input-error-msg_active {
+}
