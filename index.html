@@ -109,16 +109,24 @@
           >
             <input
               class="popup__input popup__input_type_image-title"
+              id="image-title-input"
               name="image-title"
               type="text"
               placeholder="Название"
+              minlength="2"
+              maxlength="30"
+              required
             />
+            <span class="popup__input-error-msg image-title-input-error"></span>
             <input
               class="popup__input popup__input_type_image-url"
+              id="url-input"
               name="image-url"
-              type="text"
+              type="url"
               placeholder="Ссылка на картинку"
+              required
             />
+            <span class="popup__input-error-msg url-input-error"></span>
             <button
               class="popup__submit-btn"
               type="submit"

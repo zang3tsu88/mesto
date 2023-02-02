@@ -6,7 +6,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   height: 27px;
-  padding-bottom: 13px;
+  padding-bottom: 6px;
   outline: none;
 }
 
@@ -14,20 +14,12 @@
   margin-top: 48px;
 }
 
-/* .popup__input:nth-child(3) {
-  margin-top: 30px;
-} */
+.popup__input::placeholder {
+  color: #c4c4c4;
+}
 
 @media (max-width: 580px) {
   .popup__input:first-child {
     margin-top: 75px;
   }
-}
-
-.popup__input::placeholder {
-  color: #c4c4c4;
-}
-
-.popup__input_type_error {
-  border-bottom-color: #ff0000;
 }
