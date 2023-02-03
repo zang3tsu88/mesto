@@ -87,8 +87,6 @@ function renderCards() {
 
 // Added if/else construct, addeed galary event listeners
 
-// ВОПРОС:
-
 // Стоило ли переделывать на всплытие? addEventListener лучше тут оставить или куда-то(например вниз перенести)
 
 // Я сделал их раздельно, но я полагаю можно один слушатель сделать на все 3 события, вот только стоит ли? Мне кажется читаемость ухудшиться.
@@ -158,7 +156,6 @@ buttonEditProfile.addEventListener("click", () => {
 buttonAddImage.addEventListener("click", () => {
   openPopup(popupAddImage);
 });
-
 // Close Buttons and Popups
 function handlePopupClose() {
   buttonCloseList.forEach((button) => {
