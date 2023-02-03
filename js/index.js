@@ -111,6 +111,7 @@ function openImagePopup(card) {
   bigImage.src = card.link;
   bigImage.alt = card.name;
   bigImageTitle.textContent = card.name;
+
   openPopup(popupViewImage);
 }
 
@@ -139,7 +140,6 @@ function handleAddImageForm(event) {
   });
 
   gallery.prepend(newCard);
-
   imageForm.reset();
 
   closePopup(popupAddImage);
@@ -159,10 +159,37 @@ buttonAddImage.addEventListener("click", () => {
   openPopup(popupAddImage);
 });
 
-// Close Buttons
-buttonCloseList.forEach((button) => {
-  const popup = button.closest(".popup");
-  button.addEventListener("click", () => closePopup(popup));
-});
+// Close Buttons and Popups
+function handlePopupClose() {
+  buttonCloseList.forEach((button) => {
+    const popup = button.closest(".popup_active");
+    button.addEventListener("click", () => closePopup(popup));
+  });
+
+  const allPopups = Array.from(document.querySelectorAll(".popup"));
+  allPopups.forEach((popup) => {
+    document.addEventListener("keydown", (e) => {
+      if (popup.classList.contains("popup_active") && e.key === "Escape") {
+        closePopup(popup);
+      }
+    });
+
+    // ЭТУ НИЖЕ ПЕРЕПИСАЛ ЧЕРЕЗ ВСПЛЫТИЕ, НАВЕРНОЕ ТАК ЛУЧШЕ.
+
+    // popup.addEventListener("click", (e) => {
+    //   if (e.currentTarget === e.target) {
+    //     closePopup(popup);
+    //   }
+    // });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("popup_active")) {
+      closePopup(e.target);
+    }
+  });
+}
 
 renderCards();
+
+handlePopupClose();
