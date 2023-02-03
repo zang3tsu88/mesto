@@ -42,39 +42,15 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
+/* тут я что-то запутался, ведь не надо создавать папку _error?)) */
+@import url(../blocks/popup/__input/_type/popup__input_type_error.css);
+@import url(../blocks/popup/__input-error-msg/popup__input-error-msg.css);
+@import url(../blocks/popup/__input-error-msg/_active/popup__input-error-msg_active.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
+@import url(../blocks/popup/__submit-btn/_inactive/popup__submit-btn_inactive.css);
 
 /* Image Pop-up */
 @import url(../blocks/popup/_type/popup_type_open-image.css);
 @import url(../blocks/popup/__image-figure/popup__image-figure.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__image-title/popup__image-title.css);
-
-/* Вернуться позже. Может достаточно одного класса. */
-.popup__input-error-msg {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  color: #ff0000;
-  display: block;
-  height: 30px;
-  padding-top: 5px;
-  opacity: 0;
-}
-.popup__input-error-msg_active {
-  opacity: 1;
-}
-
-.popup__input_type_error {
-  border-bottom-color: #ff0000;
-}
-
-.popup__submit-btn_inactive {
-  color: rgba(0, 0, 0, 0.15);
-  background-color: #fff;
-  border-color: rgba(0, 0, 0, 0.15);
-}
-
-.popup__submit-btn_inactive:hover {
-  opacity: 1;
-}
