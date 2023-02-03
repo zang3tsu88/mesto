@@ -162,14 +162,14 @@ buttonAddImage.addEventListener("click", () => {
 // Close Buttons and Popups
 function handlePopupClose() {
   buttonCloseList.forEach((button) => {
-    const popup = button.closest(".popup_active");
+    const popup = button.closest(".popup");
     button.addEventListener("click", () => closePopup(popup));
   });
 
   const allPopups = Array.from(document.querySelectorAll(".popup"));
   allPopups.forEach((popup) => {
     document.addEventListener("keydown", (e) => {
-      if (popup.classList.contains("popup_active") && e.key === "Escape") {
+      if (popup.classList.contains("popup") && e.key === "Escape") {
         closePopup(popup);
       }
     });
@@ -184,7 +184,7 @@ function handlePopupClose() {
   });
 
   document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("popup_active")) {
+    if (e.target.classList.contains("popup")) {
       closePopup(e.target);
     }
   });
