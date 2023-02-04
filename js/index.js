@@ -45,13 +45,47 @@ const cardTemplate = document
   .content.querySelector(".cards__item");
 const gallery = document.querySelector(".cards__list");
 
+const ESC_KEY_CODE = "Escape";
+
+// enable/disable submit button, also used in validate.js toggleButtonState
+function disableSubmitButton(button) {
+  button.classList.add("popup__submit-btn_inactive");
+  button.setAttribute("disabled", true);
+}
+function enableSubmitButton(button) {
+  button.classList.remove("popup__submit-btn_inactive");
+  button.removeAttribute("disabled");
+}
+
 // Open and Close Pop-up
 function openPopup(popup) {
   popup.classList.add("popup_active");
+  document.addEventListener("keydown", closePopupByEsc);
+  document.addEventListener("click", closePopupByClickOnOverlay);
 }
+// Разобраться на будущее:
+// Почему слушатель не работает нормально если вешать на попап.
+// popup.addEventListener("keydown", closeByEsc);
 
 function closePopup(popup) {
+  const submitButton = popup.querySelector(".popup__submit-btn");
   popup.classList.remove("popup_active");
+  disableSubmitButton(submitButton);
+  document.removeEventListener("keydown", closePopupByEsc);
+  document.removeEventListener("click", closePopupByClickOnOverlay);
+}
+
+function closePopupByEsc(e) {
+  if (e.key === ESC_KEY_CODE) {
+    const openedPopup = document.querySelector(".popup_active");
+    closePopup(openedPopup);
+  }
+}
+
+function closePopupByClickOnOverlay(e) {
+  if (e.target.classList.contains("popup_active")) {
+    closePopup(e.target);
+  }
 }
 
 function createCard(card) {
@@ -139,7 +173,6 @@ function handleAddImageForm(event) {
 
   gallery.prepend(newCard);
   imageForm.reset();
-
   closePopup(popupAddImage);
 }
 
@@ -157,36 +190,9 @@ buttonAddImage.addEventListener("click", () => {
   openPopup(popupAddImage);
 });
 // Close Buttons and Popups
-function handlePopupClose() {
-  buttonCloseList.forEach((button) => {
-    const popup = button.closest(".popup");
-    button.addEventListener("click", () => closePopup(popup));
-  });
-
-  const allPopups = Array.from(document.querySelectorAll(".popup"));
-  allPopups.forEach((popup) => {
-    document.addEventListener("keydown", (e) => {
-      if (popup.classList.contains("popup") && e.key === "Escape") {
-        closePopup(popup);
-      }
-    });
-
-    // ЭТУ НИЖЕ ПЕРЕПИСАЛ ЧЕРЕЗ ВСПЛЫТИЕ, НАВЕРНОЕ ТАК ЛУЧШЕ.
-
-    // popup.addEventListener("click", (e) => {
-    //   if (e.currentTarget === e.target) {
-    //     closePopup(popup);
-    //   }
-    // });
-  });
-
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("popup")) {
-      closePopup(e.target);
-    }
-  });
-}
+buttonCloseList.forEach((button) => {
+  const popup = button.closest(".popup");
+  button.addEventListener("click", () => closePopup(popup));
+});
 
 renderCards();
-
-handlePopupClose();

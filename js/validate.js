@@ -55,14 +55,17 @@ function hasInvalidInput(inputList) {
     return !inputElement.checkValidity();
   });
 }
+// disable/enableSubmitButton лежит рядом с closePopup в index.js
 
 function toggleButtonState(inputList, buttonElement, obj) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(obj.inactiveButtonClass);
-    buttonElement.setAttribute("disabled", true);
+    // buttonElement.classList.add(obj.inactiveButtonClass);
+    // buttonElement.setAttribute("disabled", true);
+    disableSubmitButton(buttonElement);
   } else {
-    buttonElement.classList.remove(obj.inactiveButtonClass);
-    buttonElement.removeAttribute("disabled");
+    // buttonElement.classList.remove(obj.inactiveButtonClass);
+    // buttonElement.removeAttribute("disabled");
+    enableSubmitButton(buttonElement);
   }
 }
 
