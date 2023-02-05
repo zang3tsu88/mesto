@@ -1,3 +1,5 @@
+const ESC_KEY_CODE = "Escape";
+
 // Pop-ups
 const popupProfile = document.querySelector(".popup_type_profile");
 const popupAddImage = document.querySelector(".popup_type_add-image");
@@ -45,32 +47,18 @@ const cardTemplate = document
   .content.querySelector(".cards__item");
 const gallery = document.querySelector(".cards__list");
 
-const ESC_KEY_CODE = "Escape";
-
-// enable/disable submit button, also used in validate.js toggleButtonState
-function disableSubmitButton(button) {
-  button.classList.add("popup__submit-btn_inactive");
-  button.setAttribute("disabled", true);
-}
-function enableSubmitButton(button) {
-  button.classList.remove("popup__submit-btn_inactive");
-  button.removeAttribute("disabled");
-}
-
 // Open and Close Pop-up
 function openPopup(popup) {
   popup.classList.add("popup_active");
   document.addEventListener("keydown", closePopupByEsc);
-  document.addEventListener("click", closePopupByClickOnOverlay);
+  document.addEventListener("mousedown", closePopupByClickOnOverlay);
 }
 // Разобраться на будущее:
 // Почему слушатель не работает нормально если вешать на попап.
 // popup.addEventListener("keydown", closeByEsc);
 
 function closePopup(popup) {
-  const submitButton = popup.querySelector(".popup__submit-btn");
   popup.classList.remove("popup_active");
-  disableSubmitButton(submitButton);
   document.removeEventListener("keydown", closePopupByEsc);
   document.removeEventListener("click", closePopupByClickOnOverlay);
 }
