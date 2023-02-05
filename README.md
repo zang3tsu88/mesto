@@ -1,6 +1,6 @@
 # Project: Mesto Russia
 
-This is a 4th project from a [Yandex Practicum](https://practicum.yandex.ru/) web dev course.
+This is a 4th project from a [Yandex Practicum](https://practicum.yandex.ru/) web dev course. In this project I learn to do basic JavaScript and manipulate DOM. Use objects and event listeners to add cards, like/delete them and make modal windows with JS validation for them.
 
 ## Table of contents
 
@@ -14,8 +14,6 @@ This is a 4th project from a [Yandex Practicum](https://practicum.yandex.ru/) we
 - [Author](#author)
 
 ## Overview
-
-
 
 ### Screenshot
 
