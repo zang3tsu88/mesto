@@ -3,11 +3,11 @@
   width: 22px;
   height: 19px;
   color: #fff;
-  transition: opacity 200ms;
-  cursor: pointer;
   border: none;
   background-color: transparent;
   padding: 0;
+  cursor: pointer;
+  transition: opacity 200ms;
 }
 
 .cards__like:hover {
