@@ -1,3 +1,6 @@
+import { initialCards } from "./cards.js";
+import { Card } from "./Card.js";
+
 const ESC_KEY_CODE = "Escape";
 
 // Pop-ups
@@ -78,14 +81,13 @@ function closePopupByClickOnOverlay(e) {
 
 function createCard(card) {
   const cardElement = cardTemplate.cloneNode("true");
+
   const cardImage = cardElement.querySelector(".cards__image");
   const cardTitle = cardElement.querySelector(".cards__title");
 
   cardImage.src = card.link;
   cardImage.alt = card.name;
   cardTitle.textContent = card.name;
-
-  // MOVED IT OUT OF THE CARD FUNCTION BELOW TO LIKE/DELETE FUNCITON.
 
   // const deleteImageButton = cardElement.querySelector(".cards__trash");
   // deleteImageButton.addEventListener("click", deleteCard);
@@ -100,10 +102,17 @@ function createCard(card) {
   return cardElement;
 }
 
+// function renderCards() {
+//   initialCards.forEach((item) => {
+//     const card = createCard(item);
+//     gallery.prepend(card);
+//   });
+// }
 function renderCards() {
   initialCards.forEach((item) => {
-    const card = createCard(item);
-    gallery.prepend(card);
+    const card = new Card(item, ".cards__item-template");
+    const cardElement = card.generateCard();
+    gallery.prepend(cardElement);
   });
 }
 
@@ -113,27 +122,34 @@ function renderCards() {
 
 // Я сделал их раздельно, но я полагаю можно один слушатель сделать на все 3 события, вот только стоит ли? Мне кажется читаемость ухудшиться.
 
-function deleteCard(event) {
-  if (event.target.classList.contains("cards__trash")) {
-    event.target.closest(".cards__item").remove();
-  }
-}
-gallery.addEventListener("click", deleteCard);
+// function deleteCard(event) {
+//   if (event.target.classList.contains("cards__trash")) {
+//     event.target.closest(".cards__item").remove();
+//   }
+// }
+// gallery.addEventListener("click", deleteCard);
 
-function likeCard(event) {
-  if (event.target.classList.contains("cards__like")) {
-    event.target.classList.toggle("cards__like_active");
-  }
-}
-gallery.addEventListener("click", likeCard);
+// function likeCard(event) {
+//   if (event.target.classList.contains("cards__like")) {
+//     event.target.classList.toggle("cards__like_active");
+//   }
+// }
+// gallery.addEventListener("click", likeCard);
 
-function openImagePopup(card) {
-  bigImage.src = card.link;
-  bigImage.alt = card.name;
-  bigImageTitle.textContent = card.name;
+// function deleteCard(event) {
+//   event.target.closest(".cards__item").remove();
+// }
+// function likeCard(event) {
+//   event.target.classList.toggle("cards__like_active");
+// }
 
-  openPopup(popupViewImage);
-}
+// function openImagePopup(card) {
+//   bigImage.src = card.link;
+//   bigImage.alt = card.name;
+//   bigImageTitle.textContent = card.name;
+
+//   openPopup(popupViewImage);
+// }
 
 // Load Profile Info from main page into popup form inputs
 function insertProfileInfo() {
