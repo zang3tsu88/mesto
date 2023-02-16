@@ -1,8 +1,9 @@
 class Card {
-  constructor(data, templateSelector) {
-    this._templateSelector = templateSelector; // .cards__item-template
+  constructor(data, templateSelector, openImagePopupFn) {
+    this._templateSelector = templateSelector; // ".cards__item-template"
     this._imgLink = data.link;
     this._imgName = data.name;
+    this._openImagePopup = openImagePopupFn;
   }
   // возможно тут нужен другой теплейт или cards__item
   _getTemplate() {
@@ -35,17 +36,13 @@ class Card {
     this._cardLike.classList.toggle("cards__like_active");
   }
 
-  // const bigImageTitle = popupViewImage.querySelector(".popup__image-title");
-  // const popupViewImage = document.querySelector(".popup_type_open-image");
-  // const bigImage = popupViewImage.querySelector(".popup__image");
+  // _openImagePopup() {
+  //   bigImage.src = this._imgLink;
+  //   bigImage.alt = this._imgName;
+  //   bigImageTitle.textContent = this._imgName;
 
-  _openImagePopup() {
-    bigImage.src = this._imgLink;
-    bigImage.alt = this._imgName;
-    bigImageTitle.textContent = this._imgName;
-
-    openPopup(popupViewImage);
-  }
+  //   openPopup(popupViewImage);
+  // }
 
   _setEventListeners() {
     this._cardTrash = this._card.querySelector(".cards__trash");
@@ -60,7 +57,7 @@ class Card {
     });
 
     this._cardImage.addEventListener("click", () => {
-      this._openImagePopup();
+      this._openImagePopup(data);
     });
   }
 }

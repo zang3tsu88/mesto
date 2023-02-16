@@ -80,14 +80,15 @@ function closePopupByClickOnOverlay(e) {
 }
 
 function createCard(card) {
-  const cardElement = cardTemplate.cloneNode("true");
+  const cardElement = new Card(card, ".cards__item-template");
+  // const cardElement = cardTemplate.cloneNode("true");
 
-  const cardImage = cardElement.querySelector(".cards__image");
-  const cardTitle = cardElement.querySelector(".cards__title");
+  // const cardImage = cardElement.querySelector(".cards__image");
+  // const cardTitle = cardElement.querySelector(".cards__title");
 
-  cardImage.src = card.link;
-  cardImage.alt = card.name;
-  cardTitle.textContent = card.name;
+  // cardImage.src = card.link;
+  // cardImage.alt = card.name;
+  // cardTitle.textContent = card.name;
 
   // const deleteImageButton = cardElement.querySelector(".cards__trash");
   // deleteImageButton.addEventListener("click", deleteCard);
@@ -95,11 +96,11 @@ function createCard(card) {
   // const likeButton = cardElement.querySelector(".cards__like");
   // likeButton.addEventListener("click", likeCard);
 
-  cardImage.addEventListener("click", () => {
-    openImagePopup(card);
-  });
+  // cardImage.addEventListener("click", () => {
+  //   openImagePopup(card);
+  // });
 
-  return cardElement;
+  return cardElement.generateCard();
 }
 
 // function renderCards() {
@@ -110,7 +111,7 @@ function createCard(card) {
 // }
 function renderCards() {
   initialCards.forEach((item) => {
-    const card = new Card(item, ".cards__item-template");
+    const card = new Card(item, ".cards__item-template", openImagePopup);
     const cardElement = card.generateCard();
     gallery.prepend(cardElement);
   });
@@ -143,13 +144,13 @@ function renderCards() {
 //   event.target.classList.toggle("cards__like_active");
 // }
 
-// function openImagePopup(card) {
-//   bigImage.src = card.link;
-//   bigImage.alt = card.name;
-//   bigImageTitle.textContent = card.name;
+function openImagePopup(card) {
+  bigImage.src = card.link;
+  bigImage.alt = card.name;
+  bigImageTitle.textContent = card.name;
 
-//   openPopup(popupViewImage);
-// }
+  openPopup(popupViewImage);
+}
 
 // Load Profile Info from main page into popup form inputs
 function insertProfileInfo() {
