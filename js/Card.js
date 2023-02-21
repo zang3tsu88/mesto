@@ -1,4 +1,4 @@
-export class Card {
+export default class Card {
   constructor(data, templateSelector, openImagePopupFn) {
     this._templateSelector = templateSelector; // ".cards__item-template"
     this._imgLink = data.link;
