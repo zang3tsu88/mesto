@@ -144,10 +144,10 @@ function renderCards() {
 //   event.target.classList.toggle("cards__like_active");
 // }
 
-function openImagePopup(card) {
-  bigImage.src = card.link;
-  bigImage.alt = card.name;
-  bigImageTitle.textContent = card.name;
+function openImagePopup(link, name) {
+  bigImage.src = link;
+  bigImage.alt = name;
+  bigImageTitle.textContent = name;
 
   openPopup(popupViewImage);
 }
