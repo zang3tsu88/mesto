@@ -1,3 +1,6 @@
+// Можно я пока оставлю validate.js тут, я хочу в ближайшее время попрактиковаться переписать его и хочу чтоб было с чем сверить.
+// Если что, отпишитесь, я удалю в следующую итерацию. Если это прям важно.
+
 export default class FormValidator {
   constructor(config, formElement) {
     this._formElement = formElement;

@@ -41,6 +41,7 @@ I learned two ways to make a pop-up(modal) window.
 
 1. Using an overlay and pop-up window `<div>`.
 2. Using a `<dialog>` tag. It has good built-in features like `element.openModal()` JavaScript functions with "out of the box" overlay that can be accessed with `::backdrop` pseudo-class to tweak its color or opacity, for example. Sadly it's still [not supported](https://caniuse.com/?search=dialog "CanIUse.com") everywhere.
+3. How to delete remote branch. `git branch -d <branch name>` removes branch locally, But it stays on github. To see all branches type `git branch -a` for all or `-r` flag to see only remote. To delete remote branch `git push origin -d <branch name>`. [Source article](https://www.freecodecamp.org/news/git-delete-remote-branch).
 
 ### Useful resouces
 

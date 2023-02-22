@@ -79,7 +79,7 @@ function closePopupByClickOnOverlay(e) {
 }
 
 function createCard(card) {
-  const cardElement = new Card(card, ".cards__item-template");
+  const cardElement = new Card(card, ".cards__item-template", openImagePopup);
   return cardElement.generateCard();
 }
 
