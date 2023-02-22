@@ -1,3 +1,4 @@
+import { config } from "./config.js";
 import { initialCards } from "./cards.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidate.js";
@@ -138,16 +139,10 @@ buttonCloseList.forEach((button) => {
   button.addEventListener("click", () => closePopup(popup));
 });
 
-const config = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-btn",
-  inactiveButtonClass: "popup__submit-btn_inactive",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error-msg_active",
-};
+renderCards(initialCards);
 
-const validatorProfileForm = new FormValidator(config, profileForm);
-const validatorImageForm = new FormValidator(config, imageForm);
-validatorProfileForm.enableValidation();
-validatorImageForm.enableValidation();
+const validateProfileForm = new FormValidator(config, profileForm);
+const validateImageForm = new FormValidator(config, imageForm);
+
+validateProfileForm.enableValidation();
+validateImageForm.enableValidation();
