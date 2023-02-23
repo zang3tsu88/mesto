@@ -17,6 +17,8 @@ export default class Card {
 
   generateCard() {
     this._card = this._getTemplate();
+    this._cardTrash = this._card.querySelector(".cards__trash");
+    this._cardLike = this._card.querySelector(".cards__like");
     this._cardImage = this._card.querySelector(".cards__image");
     this._cardTitle = this._card.querySelector(".cards__title");
     this._cardImage.src = this._imgLink;
@@ -32,20 +34,17 @@ export default class Card {
     this._card.remove();
   }
 
-  _likeCard() {
+  _togglelikeCard() {
     this._cardLike.classList.toggle("cards__like_active");
   }
 
   _setEventListeners() {
-    this._cardTrash = this._card.querySelector(".cards__trash");
-    this._cardLike = this._card.querySelector(".cards__like");
-
     this._cardTrash.addEventListener("click", () => {
       this._deleteCard();
     });
 
     this._cardLike.addEventListener("click", () => {
-      this._likeCard();
+      this._togglelikeCard();
     });
 
     this._cardImage.addEventListener("click", () => {

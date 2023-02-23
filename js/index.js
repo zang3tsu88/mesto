@@ -23,10 +23,10 @@ const bigImageTitle = popupViewImage.querySelector(".popup__image-title");
 const bigImage = popupViewImage.querySelector(".popup__image");
 
 // Forms
-const profileForm = popupProfile.querySelector(
-  ".popup__form_type_edit-profile"
-);
-const imageForm = popupAddImage.querySelector(".popup__form_type_add-img");
+const profileForm = document.forms.editProfileFormPopup;
+// popupProfile.querySelector(".popup__form_type_edit-profile");
+const imageForm = document.forms.addImageFormPopup;
+// popupAddImage.querySelector(".popup__form_type_add-img");
 
 // User Profile data on page
 const userName = document.querySelector(".profile__user-name");
@@ -62,7 +62,7 @@ function openImagePopup(link, name) {
 function closePopup(popup) {
   popup.classList.remove("popup_active");
   document.removeEventListener("keydown", closePopupByEsc);
-  document.removeEventListener("click", closePopupByClickOnOverlay);
+  document.removeEventListener("mousedown", closePopupByClickOnOverlay);
 }
 
 function closePopupByEsc(e) {
@@ -78,15 +78,18 @@ function closePopupByClickOnOverlay(e) {
   }
 }
 
-function createCard(card) {
-  const cardElement = new Card(card, ".cards__item-template", openImagePopup);
+function createCard(cardData) {
+  const cardElement = new Card(
+    cardData,
+    ".cards__item-template",
+    openImagePopup
+  );
   return cardElement.generateCard();
 }
 
 function renderCards() {
   initialCards.forEach((item) => {
-    const card = new Card(item, ".cards__item-template", openImagePopup);
-    const cardElement = card.generateCard();
+    const cardElement = createCard(item);
     gallery.prepend(cardElement);
   });
 }
@@ -120,19 +123,29 @@ function handleAddImageForm(event) {
   closePopup(popupAddImage);
 }
 
-profileForm.addEventListener("submit", handleSubmitProfileForm);
-imageForm.addEventListener("submit", handleAddImageForm);
+const validateProfileForm = new FormValidator(config, profileForm);
+const validateImageForm = new FormValidator(config, imageForm);
+
+validateProfileForm.enableValidation();
+validateImageForm.enableValidation();
 
 // Profile Popup
 buttonEditProfile.addEventListener("click", () => {
+  validateProfileForm.resetValidationMessage();
   openPopup(popupProfile);
   insertProfileInfo();
 });
 
 // Add Image Popup
 buttonAddImage.addEventListener("click", () => {
+  validateImageForm.resetValidationMessage();
+  imageForm.reset();
   openPopup(popupAddImage);
 });
+
+profileForm.addEventListener("submit", handleSubmitProfileForm);
+imageForm.addEventListener("submit", handleAddImageForm);
+
 // Close Buttons and Popups
 buttonCloseList.forEach((button) => {
   const popup = button.closest(".popup");
@@ -140,9 +153,3 @@ buttonCloseList.forEach((button) => {
 });
 
 renderCards(initialCards);
-
-const validateProfileForm = new FormValidator(config, profileForm);
-const validateImageForm = new FormValidator(config, imageForm);
-
-validateProfileForm.enableValidation();
-validateImageForm.enableValidation();

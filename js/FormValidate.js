@@ -1,6 +1,3 @@
-// Можно я пока оставлю validate.js тут, я хочу в ближайшее время попрактиковаться переписать его и хочу чтоб было с чем сверить.
-// Если что, отпишитесь, я удалю в следующую итерацию. Если это прям важно.
-
 export default class FormValidator {
   constructor(config, formElement) {
     this._formElement = formElement;
@@ -27,10 +24,6 @@ export default class FormValidator {
         this._toggleButtonState();
       });
     });
-
-    this._formElement.addEventListener("submit", () => {
-      this._disableSubmitButton();
-    });
   }
 
   _showInputError(inputElement) {
@@ -44,6 +37,7 @@ export default class FormValidator {
   }
 
   _hideInputError(inputElement) {
+    // а этой строкой я не дублируюсь? Вроде this._errorElement уже найден, может его тут убрать, или лучше оставить для читаемости?
     this._errorElement = this._formElement.querySelector(
       `.${inputElement.id}-error`
     );
@@ -83,5 +77,13 @@ export default class FormValidator {
     } else {
       this._enableSubmitButton(this._buttonElement);
     }
+  }
+
+  resetValidationMessage() {
+    this._toggleButtonState(); // кажется из за этого можно убрать disableSubmitButton на слушатели submit
+
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
   }
 }
