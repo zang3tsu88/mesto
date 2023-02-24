@@ -138,8 +138,8 @@ buttonEditProfile.addEventListener("click", () => {
 
 // Add Image Popup
 buttonAddImage.addEventListener("click", () => {
-  validateImageForm.resetValidationMessage();
   imageForm.reset();
+  validateImageForm.resetValidationMessage();
   openPopup(popupAddImage);
 });
 

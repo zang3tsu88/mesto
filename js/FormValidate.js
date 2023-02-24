@@ -37,7 +37,6 @@ export default class FormValidator {
   }
 
   _hideInputError(inputElement) {
-    // а этой строкой я не дублируюсь? Вроде this._errorElement уже найден, может его тут убрать, или лучше оставить для читаемости?
     this._errorElement = this._formElement.querySelector(
       `.${inputElement.id}-error`
     );
@@ -80,8 +79,7 @@ export default class FormValidator {
   }
 
   resetValidationMessage() {
-    this._toggleButtonState(); // кажется из за этого можно убрать disableSubmitButton на слушатели submit
-
+    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
