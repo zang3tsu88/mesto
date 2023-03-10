@@ -17,7 +17,7 @@ This is a 4th project from a [Yandex Practicum](https://practicum.yandex.ru/) we
 
 ### Screenshot
 
-![](./images/mesto_screenshot.png)
+![](./src/images/mesto_screenshot.png)
 
 ### Links
 
