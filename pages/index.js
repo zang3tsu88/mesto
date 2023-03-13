@@ -1,7 +1,8 @@
-import { config } from "./config.js";
-import { initialCards } from "./cards.js";
-import Card from "./Card.js";
-import FormValidator from "./FormValidate.js";
+import { config } from "../utils/config.js";
+import { initialCards } from "../utils/cards.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidate.js";
+import Section from "../components/Section.js";
 
 const ESC_KEY_CODE = "Escape";
 
@@ -87,12 +88,26 @@ function createCard(cardData) {
   return cardElement.generateCard();
 }
 
-function renderCards() {
-  initialCards.forEach((item) => {
-    const cardElement = createCard(item);
-    gallery.prepend(cardElement);
-  });
-}
+// function renderCards() {
+//   initialCards.forEach((item) => {
+//     const cardElement = createCard(item);
+//     gallery.prepend(cardElement);
+//   });
+// }
+// renderCards();
+
+const cardsList = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const cardElement = createCard(item);
+      cardsList.addItem(cardElement);
+    },
+  },
+  ".cards__list"
+);
+
+cardsList.renderItems();
 
 // Load Profile Info from main page into popup form inputs
 function insertProfileInfo() {
@@ -151,5 +166,3 @@ buttonCloseList.forEach((button) => {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
 });
-
-renderCards(initialCards);
