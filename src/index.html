@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <script type="module" src="./pages/index.js" defer></script>
     <title>Mesto</title>
   </head>
   <body class="root">
@@ -13,15 +11,16 @@
       <header class="header">
         <img
           class="header__logo"
-          src="./images/logo-mesto_color_white.svg"
-          alt="логотип место россия"
+          src="<%=require('./images/logo-mesto_color_white.svg')%>"
+          alt="логотип
+        место россия"
         />
       </header>
       <main class="main">
         <section class="profile">
           <img
             class="profile__avatar"
-            src="./images/avatar_jack_iv_kusto.jpg"
+            src="<%=require('./images/avatar_jack_iv_kusto.jpg')%>"
             alt="Аватарка пользователя"
           />
           <div class="profile__user-info">
