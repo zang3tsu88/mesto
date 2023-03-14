@@ -1,4 +1,4 @@
-import Popup from "./Popup";
+import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, formSubmitFn) {
@@ -8,7 +8,7 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    this._inputList = this._popup.querySelectorAll(".popup__input");
+    this._inputList = this._popupForm.querySelectorAll(".popup__input");
 
     this._inputValues = {}; // может переделать в const ?
 
@@ -20,8 +20,8 @@ export default class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    super.setEventListeners;
-    this._popupForm.addEventlistener("submit", (e) => {
+    super.setEventListeners();
+    this._popupForm.addEventListener("submit", (e) => {
       e.preventDefault();
       this._formSubmit(this._getInputValues());
       this.close();

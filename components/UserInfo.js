@@ -1,7 +1,9 @@
 export default class UserInfo {
-  constructor({ nameSelector, occupationSelector }) {
-    this._profileName = document.querySelector(nameSelector);
-    this._profileOccupation = document.querySelector(occupationSelector);
+  constructor(profileSelectors) {
+    this._profileName = document.querySelector(profileSelectors.nameSelector);
+    this._profileOccupation = document.querySelector(
+      profileSelectors.occupationSelector
+    );
   }
 
   getUserInfo() {
@@ -12,7 +14,7 @@ export default class UserInfo {
   }
 
   setUserInfo(userName, userOccupation) {
-    this._profileName.textContent = userName.value; // .value maybe not needed. RETURN LATER
-    this._profileOccupation.textContent = userOccupation.value; // .value maybe not needed. RETURN LATER
+    this._profileName.textContent = userName.value;
+    this._profileOccupation.textContent = userOccupation.value;
   }
 }
