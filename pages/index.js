@@ -3,6 +3,9 @@ import { initialCards } from "../utils/cards.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidate.js";
 import Section from "../components/Section.js";
+import Popup from "../components/Popup.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 
 const ESC_KEY_CODE = "Escape";
 
@@ -52,13 +55,13 @@ function openPopup(popup) {
   document.addEventListener("mousedown", closePopupByClickOnOverlay);
 }
 
-function openImagePopup(link, name) {
-  bigImage.src = link;
-  bigImage.alt = name;
-  bigImageTitle.textContent = name;
+// function openImagePopup(link, name) {
+//   bigImage.src = link;
+//   bigImage.alt = name;
+//   bigImageTitle.textContent = name;
 
-  openPopup(popupViewImage);
-}
+//   openPopup(popupViewImage);
+// }
 
 function closePopup(popup) {
   popup.classList.remove("popup_active");
@@ -82,8 +85,12 @@ function closePopupByClickOnOverlay(e) {
 function createCard(cardData) {
   const cardElement = new Card(
     cardData,
-    ".cards__item-template",
-    openImagePopup
+    {
+      openImagePopupFn: () => {
+        imagePopup.open(cardData);
+      },
+    },
+    ".cards__item-template"
   );
   return cardElement.generateCard();
 }
@@ -106,8 +113,20 @@ const cardsList = new Section(
   },
   ".cards__list"
 );
-
 cardsList.renderItems();
+
+const imagePopup = new PopupWithImage(".popup_type_open-image");
+console.log(imagePopup);
+imagePopup.setEventListeners();
+
+const userInfo = new UserInfo({
+  nameSelector: ".profile__user-name",
+  occupationSelector: ".profile__user-occupation",
+});
+console.log(userInfo.getUserInfo());
+
+////////////////////////////////////////////
+////////////////////////////////////////////
 
 // Load Profile Info from main page into popup form inputs
 function insertProfileInfo() {
@@ -161,8 +180,8 @@ buttonAddImage.addEventListener("click", () => {
 profileForm.addEventListener("submit", handleSubmitProfileForm);
 imageForm.addEventListener("submit", handleAddImageForm);
 
-// Close Buttons and Popups
-buttonCloseList.forEach((button) => {
-  const popup = button.closest(".popup");
-  button.addEventListener("click", () => closePopup(popup));
-});
+// // Close Buttons and Popups
+// buttonCloseList.forEach((button) => {
+//   const popup = button.closest(".popup");
+//   button.addEventListener("click", () => closePopup(popup));
+// });
