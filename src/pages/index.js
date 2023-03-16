@@ -1,8 +1,4 @@
 /**
- * Извиняюсь но у меня один баг, не получается отловить никак.
- * При сабмите формы с именем, новое имя не попадает на сайт.
- * Вот хоть убейте - никак не найду. Вроде все верно. Извитите.
- *
  * Еще, в .gitignore почему-то упорно не добавляется папка oldFiles,
  * хотя я ее прописал.
  *
@@ -30,11 +26,11 @@ const buttonAddImage = document.querySelector(".profile__btn-add-img");
 const profileForm = document.forms.editProfileFormPopup;
 const imageForm = document.forms.addImageFormPopup;
 
-// User Profile Form Input Fields
-const formName = profileForm.querySelector(".popup__input_type_name");
-const formOccupation = profileForm.querySelector(
-  ".popup__input_type_occupation"
-);
+// // User Profile Form Input Fields
+// const formName = profileForm.querySelector(".popup__input_type_name");
+// const formOccupation = profileForm.querySelector(
+//   ".popup__input_type_occupation"
+// );
 
 function createCard(cardData) {
   const cardElement = new Card(
@@ -80,6 +76,7 @@ const popupAddImageForm = new PopupWithForm(
 );
 
 buttonAddImage.addEventListener("click", () => {
+  validateImageForm.resetValidationMessage();
   popupAddImageForm.open();
 });
 
@@ -100,12 +97,13 @@ const userInfo = new UserInfo({
   occupationSelector: ".profile__user-occupation",
 });
 userInfo.getUserInfo();
-console.log(userInfo.getUserInfo()); // console log
+console.log(userInfo.getUserInfo());
 
 buttonEditProfile.addEventListener("click", () => {
-  const userProfile = userInfo.getUserInfo();
-  formName.value = userProfile.name;
-  formOccupation.value = userProfile.occupation;
+  // const userProfile = userInfo.getUserInfo();
+  // formName.value = userProfile.name;
+  // formOccupation.value = userProfile.occupation;
+  popupEditProfileForm.setInputValues(userInfo.getUserInfo());
   popupEditProfileForm.open();
 });
 
