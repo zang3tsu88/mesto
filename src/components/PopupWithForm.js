@@ -17,20 +17,7 @@ export default class PopupWithForm extends Popup {
 
     return this._inputValues;
   }
-  /**
-   * В целом понял, спасибо. Но один вопрос, не совсем пойму
-   *
-   * Это сейчас у моих импутов и обьекта вроде совпадают названия
-   * name, occupation. А если бы они отличались?
-   *
-   * Я ведь тогда бы не смог получить к ним доступ через data[input.name]
-   * data это получаемый обьект из getUserInfo. где я прописал name
-   * и occupation. И так уж совпало что у них одно имя с input.name..
-   *
-   *  data = {name: 'Жак-Ив Кусто', occupation: 'Исследователь океана'}
-   *
-   * Как тогда быть?
-   */
+
   setInputValues(data) {
     this._inputList.forEach((input) => {
       input.value = data[input.name];
