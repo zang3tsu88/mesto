@@ -153,6 +153,59 @@
       </div>
     </div>
 
+    <div class="popup popup_type_confirm">
+      <div class="popup__window">
+        <button
+          class="popup__close-btn"
+          type="button"
+          aria-label="Закрыть попап"
+        ></button>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <form
+          class="popup__form popup__form_type_confirm"
+          name="confirm"
+          method="POST"
+        >
+          <button class="popup__submit-btn" type="submit" aria-label="Да">
+            Да
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_change-avatar">
+      <div class="popup__window">
+        <button
+          class="popup__close-btn"
+          type="button"
+          aria-label="Закрыть попап"
+        ></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form
+          class="popup__form popup__form_type_change-avatar"
+          name="change_avatar"
+          method="POST"
+        >
+          <input
+            class="popup__input popup__input_type_avatar-url"
+            id="url-input"
+            name="avatar-url"
+            type="url"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span class="popup__input-error-msg url-input-error"></span>
+          <button
+            class="popup__submit-btn"
+            type="submit"
+            aria-label="Сохранить изменения"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+
     <template class="cards__item-template">
       <li class="cards__item">
         <button class="cards__trash" aria-label="Удалить фото"></button>
