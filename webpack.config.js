@@ -21,6 +21,8 @@ module.exports = {
     open: true,
   },
 
+  devtool: "source-map",
+
   module: {
     rules: [
       {
@@ -56,6 +58,11 @@ module.exports = {
           filename: "fonts/[name].[hash][ext]",
         },
       },
+      // {
+      //   test: /\.js$/,
+      //   enforce: "pre",
+      //   use: ["source-map-loader"],
+      // },
     ],
   },
 

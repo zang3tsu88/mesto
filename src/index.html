@@ -18,13 +18,20 @@
       </header>
       <main class="main">
         <section class="profile">
-          <div class="profile__avatar-container">
+          <button class="profile__avatar-btn">
             <img
               class="profile__avatar"
               src="<%=require('./images/avatar_jack_iv_kusto.jpg')%>"
               alt="Аватарка пользователя"
             />
-          </div>
+          </button>
+          <!-- <div class="profile__avatar-container">
+            <img
+              class="profile__avatar"
+              src="<%=require('./images/avatar_jack_iv_kusto.jpg')%>"
+              alt="Аватарка пользователя"
+            />
+          </div> -->
           <div class="profile__user-info">
             <h1 class="profile__user-name">Жак-Ив Кусто</h1>
             <button
@@ -77,7 +84,7 @@
             <input
               class="popup__input popup__input_type_occupation"
               id="occupation-input"
-              name="occupation"
+              name="about"
               type="text"
               placeholder="О себе"
               minlength="2"
@@ -183,13 +190,13 @@
         <h2 class="popup__title">Обновить аватар</h2>
         <form
           class="popup__form popup__form_type_change-avatar"
-          name="change_avatar"
+          name="changeAvatar"
           method="POST"
         >
           <input
             class="popup__input popup__input_type_avatar-url"
             id="url-input"
-            name="avatar-url"
+            name="avatar"
             type="url"
             placeholder="Ссылка на картинку"
             required

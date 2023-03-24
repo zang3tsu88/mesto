@@ -2,9 +2,5 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  transition: opacity 300ms linear;
-}
-
-.profile__avatar:hover {
-  opacity: 0.2;
+  object-fit: cover;
 }

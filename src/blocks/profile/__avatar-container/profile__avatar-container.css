@@ -1,9 +1,0 @@
-.profile__avatar-container {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-image: url("../../../images/pencil_type_active.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 26px 26px;
-}
