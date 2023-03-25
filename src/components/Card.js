@@ -20,11 +20,6 @@ export default class Card {
 
     this._isOwner = data.owner._id === currentUserId;
 
-    // // misc functions
-    // this._handleCartByClick = handleCartByClick;
-    // this._likes = data.likes;
-    // this._likeMyCard = likeMyCard;
-    // this._deleteLikeMyCard = deleteLikeMyCard;
   }
   // возможно тут нужен другой теплейт или cards__item
   _getTemplate() {

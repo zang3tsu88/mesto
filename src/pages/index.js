@@ -38,11 +38,8 @@ const api = new Api(
 
 Promise.all([api.getCurrentUser(), api.getCards()])
   .then(([user, cards]) => {
-    console.log(user); // CONSOLE.LOG
-    console.log(cards);
     userInfo.setUserInfo(user);
     currentUserId = user._id; // Может стоит его добавлять через setUserInfo ..
-    console.log(currentUserId);
 
     cardsList.renderItems(cards);
   })
@@ -54,9 +51,7 @@ const userInfo = new UserInfo({
   avatarSelector: ".profile__avatar",
 });
 
-console.log(userInfo.getUserInfo());
-
-// ////// CONFIRMATION & IMAGE POPUP
+// ////// CONFIRMATION & IMAGE POPUP ////////////////////
 
 const imagePopup = new PopupWithImage(".popup_type_open-image");
 imagePopup.setEventListeners();
@@ -64,7 +59,7 @@ imagePopup.setEventListeners();
 const confirmationPopup = new PopupWithConfirmation(".popup_type_confirm");
 confirmationPopup.setEventListeners();
 
-// ////////// CREATE CARD
+// ////////// CREATE CARD ////////////////////
 
 function openImagePopup(cardData) {
   imagePopup.open(cardData);
@@ -207,6 +202,7 @@ buttonEditProfile.addEventListener("click", () => {
 });
 
 buttonChangeAvatar.addEventListener("click", () => {
+  validateAvatarForm.resetValidationMessage();
   popupChangeAvatarForm.open();
 });
 
@@ -219,14 +215,3 @@ const validateAvatarForm = new FormValidator(config, avatarForm);
 validateProfileForm.enableValidation();
 validateImageForm.enableValidation();
 validateAvatarForm.enableValidation();
-
-/**
- * 20-29 min - создание первого фетч запроса на получение карточки
- * 33, 35, мин добавленик новой карточки
- * 41 min refactor similar code (token,header, res.ok)
- * 51 почему catch выполняется в индекс а не в апи где совершается запрос
- * 56 информация о пользователи приходит
- * 58 Promise.all
- * 1:00 userId
- * 1:11, 1:16 deletetask
- */
