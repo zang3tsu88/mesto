@@ -439,10 +439,57 @@ template {
   }
 }
 
+/* .profile__avatar-container {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-image: url("../../../images/pencil_type_active.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px 26px;
+} */
+
+.profile__avatar-btn {
+  width: 120px;
+  height: 120px;
+  background-color: #000;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.profile__avatar-btn:focus {
+  outline: none;
+}
+
+.profile__avatar-btn::before {
+  content: "";
+  background-image: url(images/pencil_type_active.6c7bf05444b9793fdf6e.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px 26px;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 300ms linear;
+}
+
+.profile__avatar-btn:hover::before {
+  opacity: 1;
+}
+
 .profile__avatar {
   width: 120px;
   height: 120px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .profile__user-info {
@@ -609,10 +656,10 @@ template {
 
 .cards__description {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  padding: 23px 20px 27px 21px;
- }
+  padding: 22px 20px 27px 21px;
+}
 
 .cards__title {
   margin: 0;
@@ -643,6 +690,19 @@ template {
 
 .cards__like_active {
   background-image: url(images/heart_type_active.35948469632d0421d697.svg);
+}
+
+.cards__counter {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #000000;
+  /* maybe remove height later.
+  ** right now, without number the heart
+  ** bounces up and down */
+  height: 16px;
 }
 
 .cards__trash {
@@ -768,6 +828,8 @@ template {
 }
 
 .popup__title {
+  font-family: "Inter";
+  font-style: normal;
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
@@ -775,7 +837,6 @@ template {
 }
 
 @media (max-width: 630px) {
-
   .popup__title {
     font-size: 18px;
     line-height: 22px;
@@ -833,6 +894,8 @@ template {
 }
 
 .popup__submit-btn {
+  font-family: "Inter";
+  font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -913,3 +976,5 @@ template {
 
 /* Image Pop-up */
 
+
+/*# sourceMappingURL=main.css.map*/
