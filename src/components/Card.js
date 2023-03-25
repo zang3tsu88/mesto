@@ -13,13 +13,13 @@ export default class Card {
     this._imgName = data.name;
     this._id = data._id; // card id
     this._likes = data.likes; // card likes number
+    this._currentUserId = currentUserId;
     this._openImagePopup = openImagePopupFn;
     this._deleteCardApi = deleteCardApiFn;
     this._likeMyCard = likeMyCardFn;
     this._unlikeMyCard = unlikeMyCardFn;
 
     this._isOwner = data.owner._id === currentUserId;
-
   }
   // возможно тут нужен другой теплейт или cards__item
   _getTemplate() {
@@ -43,8 +43,9 @@ export default class Card {
     this._cardTitle.textContent = this._imgName;
     this._cardLikeCounter.textContent = this._likes.length;
 
+    // if im not the owner of the card - remove delete card button
     if (!this._isOwner) this._cardTrash.remove();
-
+    // check if card is liked by me
     if (this._addlikedCard()) {
       this._cardLike.classList.add("cards__like_active");
     } else {
@@ -81,11 +82,9 @@ export default class Card {
     this._cardTrash.addEventListener("click", () => {
       this._deleteCard();
     });
-
     this._cardLike.addEventListener("click", (e) => {
       this._setLikes(e);
     });
-
     this._cardImage.addEventListener("click", () => {
       this._openImagePopup({ link: this._imgLink, name: this._imgName });
     });
