@@ -58,11 +58,6 @@ module.exports = {
           filename: "fonts/[name].[hash][ext]",
         },
       },
-      // {
-      //   test: /\.js$/,
-      //   enforce: "pre",
-      //   use: ["source-map-loader"],
-      // },
     ],
   },
 
