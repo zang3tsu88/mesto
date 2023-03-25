@@ -29,14 +29,6 @@ const buttonEditProfile = document.querySelector(".profile__edit-btn");
 const buttonAddImage = document.querySelector(".profile__btn-add-img");
 const buttonChangeAvatar = document.querySelector(".profile__avatar-btn");
 
-const validateProfileForm = new FormValidator(config, profileForm);
-const validateImageForm = new FormValidator(config, imageForm);
-const validateAvatarForm = new FormValidator(config, avatarForm);
-
-validateProfileForm.enableValidation();
-validateImageForm.enableValidation();
-validateAvatarForm.enableValidation();
-
 let currentUserId;
 
 const api = new Api(
@@ -49,7 +41,7 @@ Promise.all([api.getCurrentUser(), api.getCards()])
     console.log(user); // CONSOLE.LOG
     console.log(cards);
     userInfo.setUserInfo(user);
-    currentUserId = user._id;
+    currentUserId = user._id; // Может стоит его добавлять через setUserInfo ..
     console.log(currentUserId);
 
     cardsList.renderItems(cards);
@@ -78,12 +70,56 @@ function openImagePopup(cardData) {
   imagePopup.open(cardData);
 }
 
+function deleteCardApi(id, card) {
+  confirmationPopup.open();
+  confirmationPopup.changeSubmitHandler(() => {
+    confirmationPopup.renderLoading(true);
+    api
+      .deleteCard(id)
+      .then(() => {
+        card.remove();
+        confirmationPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        confirmationPopup.renderLoading(false);
+      });
+  });
+}
+
+function likeMyCard(id, card) {
+  api
+    .likeCard(id)
+    .then((res) => {
+      card.toggleLikeCard(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function unlikeMyCard(id, card) {
+  api
+    .unlikeCard(id)
+    .then((res) => {
+      card.toggleLikeCard(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 function createCard(cardData) {
   const cardElement = new Card(
-    currentUserId,
+    ".cards__item-template",
     cardData,
+    currentUserId,
     openImagePopup,
-    ".cards__item-template"
+    deleteCardApi,
+    likeMyCard,
+    unlikeMyCard
   );
   return cardElement.generateCard();
 }
@@ -105,6 +141,7 @@ const popupAddImageForm = new PopupWithForm(".popup_type_add-image", (data) => {
   api
     .createNewCard(data)
     .then((newCard) => {
+      console.log(newCard);
       cardsList.addItem(createCard(newCard));
       popupAddImageForm.close();
     })
@@ -174,6 +211,14 @@ buttonChangeAvatar.addEventListener("click", () => {
 });
 
 // ////////// FORM VALIDATION ////////////////////
+
+const validateProfileForm = new FormValidator(config, profileForm);
+const validateImageForm = new FormValidator(config, imageForm);
+const validateAvatarForm = new FormValidator(config, avatarForm);
+
+validateProfileForm.enableValidation();
+validateImageForm.enableValidation();
+validateAvatarForm.enableValidation();
 
 /**
  * 20-29 min - создание первого фетч запроса на получение карточки

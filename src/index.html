@@ -25,13 +25,6 @@
               alt="Аватарка пользователя"
             />
           </button>
-          <!-- <div class="profile__avatar-container">
-            <img
-              class="profile__avatar"
-              src="<%=require('./images/avatar_jack_iv_kusto.jpg')%>"
-              alt="Аватарка пользователя"
-            />
-          </div> -->
           <div class="profile__user-info">
             <h1 class="profile__user-name">Жак-Ив Кусто</h1>
             <button
@@ -119,18 +112,21 @@
             <input
               class="popup__input popup__input_type_image-title"
               id="image-title-input"
-              name="image-title"
+              name="name"
               type="text"
               placeholder="Название"
               minlength="2"
               maxlength="30"
               required
             />
+            <!-- input names were name="image-title" and name="image-url"
+                 find out later where to change them. New Cards dont add
+                because name is different in client/server  -->
             <span class="popup__input-error-msg image-title-input-error"></span>
             <input
               class="popup__input popup__input_type_image-url"
               id="url-input"
-              name="image-url"
+              name="link"
               type="url"
               placeholder="Ссылка на картинку"
               required

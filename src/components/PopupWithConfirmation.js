@@ -1,11 +1,10 @@
 import Popup from "./Popup";
 
 export default class PopupWithConfirmation extends Popup {
-  constructor(popupSelector, deleteMyCardFn) {
+  constructor(popupSelector) {
     super(popupSelector);
     this._formElement = this._popup.querySelector(".popup__form");
     this._buttonSubmit = this._formElement.querySelector(".popup__submit-btn");
-    this._deleteMyCard = deleteMyCardFn;
     this._buttonSubmitText = this._buttonSubmit.textContent;
   }
 

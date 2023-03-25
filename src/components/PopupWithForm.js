@@ -9,7 +9,11 @@ export default class PopupWithForm extends Popup {
     this._buttonSubmit = this._popupForm.querySelector(".popup__submit-btn");
     this._buttonSubmitText = this._buttonSubmit.textContent;
   }
-
+  /**
+   * вот, тут подумать как реализовать если имя инпута в html отличается,
+   * потому что изначально у меня имя было name="image-title"
+   * and name="image-url" . изза этого были проблемы с сервером
+   */
   _getInputValues() {
     this._inputValues = {};
 
